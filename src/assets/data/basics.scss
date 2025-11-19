@@ -1,0 +1,61 @@
+// Migrated design tokens from colors.scss
+// Project design tokens: colors, fonts, breakpoints, grid and shadows
+// Generated: variables for primary palette, font stacks, desktop/mobile sizes
+
+// -----------------------------
+// Colors
+// -----------------------------
+$color-primary: #FF642F; // main brand orange
+$color-accent:  #FFD7C9; // light peach accent
+$color-sky:     #E3F1FF; // pale blue
+$color-black:   #000000;
+$color-gray:    #7F7F7F; // neutral mid
+$color-gray-100:#E8E8E8; // light neutral
+$color-gray-200:#F9F9F9; // extra light / background
+
+$colors: (
+	"primary": $color-primary,
+	"accent": $color-accent,
+	"sky": $color-sky,
+	"black": $color-black,
+	"gray": $color-gray,
+	"gray-100": $color-gray-100,
+	"gray-200": $color-gray-200
+);
+
+// -----------------------------
+// Fonts
+// -----------------------------
+// Headings: Playfair Display (serif). Body: Inter (sans-serif).
+$font-heading: "Playfair Display", Georgia, "Times New Roman", serif;
+$font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+// -----------------------------
+// Layout / Grid / Breakpoints
+// Values taken from design spec (see style guide)
+// Desktop
+$desktop-viewport: 1440px;
+$desktop-container: 1440px;
+$desktop-columns: 12;
+$desktop-offset: 150px;
+$gutter-width: 30px; // used in both desktop and mobile from design
+$desktop-column-width: 65px;
+
+// Mobile
+$mobile-viewport: 375px; // design breakpoint
+$mobile-total-width: 345px; // content width inside smaller devices per spec
+$mobile-columns: 6;
+$mobile-offset: 15px;
+$mobile-column-width: 32px;
+
+// -----------------------------
+// Shadows
+// -----------------------------
+$soft-shadow: 0 12px 30px rgba(0, 0, 0, 0.06); // subtle soft shadow
+$modal-shadow: 0 30px 60px rgba(0, 0, 0, 0.08); // stronger shadow for modals/dialogs
+
+// -----------------------------
+// Usage helpers (optional)
+// Example: color: map-get($colors, "primary");
+// Example: font-family: $font-heading;
+
