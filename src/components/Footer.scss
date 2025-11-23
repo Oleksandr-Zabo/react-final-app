@@ -6,6 +6,16 @@
 	font-family: $font-body;
 	padding: 60px 0 24px;
 
+	/* Desktop (default) => show static section headings, hide dropdown chevrons */
+	.section-header {
+		.section-button { background: transparent; border: none; padding: 0; cursor: default; display: flex; align-items: center; }
+		.section-title { color: $color-black; font-weight: 600; }
+		.chev { display: none; }
+	}
+
+	/* Ensure section content always visible on desktop regardless of expanded/collapsed classes */
+	.section-content { display: block; }
+
 	.footer-inner {
 		display: flex;
 		gap: 32px;
