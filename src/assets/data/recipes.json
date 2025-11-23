@@ -1,0 +1,395 @@
+[
+  {
+    "id": "strawberry-cream-cheesecake",
+    "title": "Strawberry Cream Cheesecake",
+    "slug": "strawberry-cream-cheesecake",
+    "language": "en",
+    "description": "A creamy, ultra-smooth classic strawberry cream cheesecake — simple decadence with a light fruity topping.",
+    "excerpt": "Ultra-smooth no-bake cheesecake with strawberry finish.",
+    "wouldMakePercent": 85,
+    "rating": 5,
+    "reviewsCount": 25,
+    "author": {
+      "name": "Tricia Albert",
+      "role": "Contributor",
+      "avatar": "assets/img/avatars/avatar.jpg"
+    },
+    "prepTime": "15 MIN",
+    "chillTime": "2 HRS",
+    "cookTime": "0 MIN",
+    "totalTime": "2 HRS 15 MIN",
+    "servings": 8,
+    "yieldText": "1 x 20cm (8\") tart",
+    "difficulty": "easy",
+    "tags": ["dessert", "cheesecake", "strawberry", "no-bake"],
+    "images": {
+      "cover": "assets/img/recipes/cheesecake-large.jpg",
+      "gallery": [
+        "assets/img/recipes/cheesecake-large.jpg",
+        "assets/img/recipes/cheesecake-large.jpg",
+        "assets/img/recipes/cheesecake-large.jpg"
+      ]
+    },
+    "ingredients": [
+      {
+        "group": "Crust",
+        "items": [
+          {"qty": 400, "unit": "g", "name": "graham crackers (digestive biscuits)", "id": "graham-crackers"},
+          {"qty": 150, "unit": "g", "name": "unsalted butter, melted", "id": "butter"}
+        ]
+      },
+      {
+        "group": "Filling",
+        "items": [
+          {"qty": 300, "unit": "g", "name": "marshmallows (optional)", "optional": true, "id": "marshmallows"},
+          {"qty": 175, "unit": "g", "name": "unsalted butter, melted", "id": "butter-melted"},
+          {"qty": 500, "unit": "g", "name": "cream cheese, softened", "brand": "Philadelphia", "id": "cream-cheese"},
+          {"qty": 250, "unit": "ml", "name": "warm whipping cream", "id": "cream"},
+          {"qty": 3, "unit": "tbsp", "name": "powdered gelatin", "id": "gelatin"},
+          {"qty": 3, "unit": "tbsp", "name": "water", "id": "water"},
+          {"qty": 5, "unit": "drops", "name": "purple food gel", "id": "gel-purple"},
+          {"qty": 3, "unit": "drops", "name": "blue food gel", "id": "gel-blue"}
+        ]
+      }
+    ],
+    "steps": [
+      {"order": 1, "text": "Process crackers to fine crumbs, pulse with melted butter."},
+      {"order": 2, "text": "Press into 20cm tart tin; chill 30 min."},
+      {"order": 3, "text": "Microwave marshmallows + butter 30s, stir smooth."},
+      {"order": 4, "text": "Bloom gelatin in water; microwave 30s to dissolve."},
+      {"order": 5, "text": "Beat cream cheese into marshmallow mixture until smooth."},
+      {"order": 6, "text": "Mix in warm cream and dissolved gelatin."},
+      {"order": 7, "text": "Divide & colour mixtures: purple, blue, pink, and plain."},
+      {"order": 8, "text": "Layer and swirl colours in crust; chill 2 hrs."},
+      {"order": 9, "text": "Slice and serve."}
+    ],
+    "nutrition": {
+      "perServing": {
+        "calories": 220,
+        "fat": 10.7,
+        "saturatedFat": 2.2,
+        "cholesterol": 37.4,
+        "sodium": 120.3,
+        "potassium": 32.8,
+        "carbohydrates": 22.3,
+        "sugars": 8.4,
+        "protein": 7.9,
+        "unit": "g"
+      },
+      "servingSize": "1 slice"
+    },
+    "comments": [
+      {"id": "c1", "author": "Jelanee Uwa", "avatar": "assets/img/avatars/avatar.jpg", "time": "45 min ago", "content": "Amazing texture – colours turned out great!", "likes": 48},
+      {"id": "c2", "author": "Qiu Xun", "avatar": "assets/img/avatars/avatar.jpg", "time": "45 min ago", "content": "Love the no-bake method 🔥", "likes": 12},
+      {"id": "c3", "author": "Noell Blue", "avatar": "assets/img/avatars/avatar.jpg", "time": "45 min ago", "content": "So smooth and easy to slice.", "likes": 6}
+    ],
+    "related": ["spinach-and-cheese-pasta", "perfect-fancy-glazed-donuts", "mighty-cheesy-breakfast-burger"],
+    "updatedAt": "2025-11-23"
+  },
+  {
+    "id": "spinach-and-cheese-pasta",
+    "title": "Spinach and Cheese Pasta",
+    "slug": "spinach-and-cheese-pasta",
+    "language": "en",
+    "description": "Creamy weeknight pasta with wilted spinach and melted cheese.",
+    "excerpt": "Fast 25‑minute spinach pasta dinner.",
+    "rating": 4.8,
+    "reviewsCount": 12,
+    "author": {"name": "House Kitchen", "role": "Test Kitchen", "avatar": "assets/img/avatars/avatar.jpg"},
+    "prepTime": "10 MIN",
+    "cookTime": "15 MIN",
+    "totalTime": "25 MIN",
+    "servings": 3,
+    "difficulty": "easy",
+    "tags": ["pasta", "vegetarian", "quick"],
+    "images": {
+      "cover": "assets/img/recipes/spinach-pasta.jpg",
+      "gallery": [
+        "assets/img/recipes/spinach-pasta.jpg",
+        "assets/img/recipes/spinach-pasta.jpg",
+        "assets/img/recipes/spinach-pasta.jpg"
+      ]
+    },
+    "ingredients": [
+      {"group": "Base", "items": [
+        {"qty": 250, "unit": "g", "name": "short pasta"},
+        {"qty": 2, "unit": "tbsp", "name": "olive oil"},
+        {"qty": 2, "unit": "cloves", "name": "garlic, minced"}
+      ]},
+      {"group": "Sauce", "items": [
+        {"qty": 150, "unit": "g", "name": "baby spinach"},
+        {"qty": 120, "unit": "ml", "name": "cream"},
+        {"qty": 80, "unit": "g", "name": "grated mozzarella"},
+        {"qty": 40, "unit": "g", "name": "parmesan"}
+      ]}
+    ],
+    "steps": [
+      {"order": 1, "text": "Cook pasta to al dente."},
+      {"order": 2, "text": "Sauté garlic in oil; add cream."},
+      {"order": 3, "text": "Stir in spinach until wilted."},
+      {"order": 4, "text": "Fold in cheeses and pasta; season."}
+    ],
+    "updatedAt": "2025-11-23"
+  },
+  {
+    "id": "perfect-fancy-glazed-donuts",
+    "title": "Perfect Fancy Glazed Donuts",
+    "slug": "perfect-fancy-glazed-donuts",
+    "language": "en",
+    "description": "Airy yeasted donuts with shiny vanilla glaze.",
+    "excerpt": "Bakery-style glazed donuts at home.",
+    "rating": 4.9,
+    "reviewsCount": 34,
+    "author": {"name": "Pastry Lab", "role": "Bakery", "avatar": "assets/img/avatars/avatar.jpg"},
+    "prepTime": "20 MIN",
+    "riseTime": "1 HRS",
+    "cookTime": "10 MIN",
+    "totalTime": "1 HRS 30 MIN",
+    "servings": 12,
+    "difficulty": "medium",
+    "tags": ["dessert", "baked", "donuts"],
+    "images": {
+      "cover": "assets/img/recipes/donuts.jpg",
+      "gallery": [
+        "assets/img/recipes/donuts.jpg",
+        "assets/img/recipes/donuts.jpg",
+        "assets/img/recipes/donuts.jpg"
+      ]
+    },
+    "ingredients": [
+      {"group": "Dough", "items": [
+        {"qty": 300, "unit": "g", "name": "all-purpose flour"},
+        {"qty": 7, "unit": "g", "name": "instant yeast"},
+        {"qty": 40, "unit": "g", "name": "sugar"},
+        {"qty": 1, "unit": "pinch", "name": "salt"},
+        {"qty": 180, "unit": "ml", "name": "warm milk"},
+        {"qty": 1, "unit": "pc", "name": "egg"}
+      ]},
+      {"group": "Glaze", "items": [
+        {"qty": 150, "unit": "g", "name": "powdered sugar"},
+        {"qty": 3, "unit": "tbsp", "name": "milk"},
+        {"qty": 1, "unit": "tsp", "name": "vanilla"}
+      ]}
+    ],
+    "steps": [
+      {"order": 1, "text": "Mix dough; knead 8 min until smooth."},
+      {"order": 2, "text": "Rise 1 hr until doubled; cut rings."},
+      {"order": 3, "text": "Fry at 180°C until golden."},
+      {"order": 4, "text": "Dip in glaze; set."}
+    ],
+    "updatedAt": "2025-11-23"
+  },
+  {
+    "id": "mighty-cheesy-breakfast-burger",
+    "title": "Mighty Cheesy Breakfast Burger",
+    "slug": "mighty-cheesy-breakfast-burger",
+    "language": "en",
+    "description": "Hearty breakfast burger with egg and melty cheese.",
+    "excerpt": "Cheesy morning fuel burger.",
+    "rating": 4.7,
+    "reviewsCount": 10,
+    "author": {"name": "Grill Squad", "role": "Development", "avatar": "assets/img/avatars/avatar.jpg"},
+    "prepTime": "10 MIN",
+    "cookTime": "10 MIN",
+    "totalTime": "20 MIN",
+    "servings": 2,
+    "difficulty": "easy",
+    "tags": ["breakfast", "burger", "savory"],
+    "images": {
+      "cover": "assets/img/recipes/breakfast-burger.jpg",
+      "gallery": [
+        "assets/img/recipes/breakfast-burger.jpg",
+        "assets/img/recipes/breakfast-burger.jpg",
+        "assets/img/recipes/breakfast-burger.jpg"
+      ]
+    },
+    "ingredients": [
+      {"group": "Burger", "items": [
+        {"qty": 250, "unit": "g", "name": "ground beef"},
+        {"qty": 2, "unit": "pc", "name": "eggs"},
+        {"qty": 2, "unit": "slices", "name": "cheddar"},
+        {"qty": 2, "unit": "pc", "name": "buns"}
+      ]}
+    ],
+    "steps": [
+      {"order": 1, "text": "Form patties; season."},
+      {"order": 2, "text": "Grill patties; top with cheese."},
+      {"order": 3, "text": "Fry eggs to preference."},
+      {"order": 4, "text": "Assemble burgers."}
+    ],
+    "updatedAt": "2025-11-23"
+  },
+  {
+    "id": "creamy-tomato-soup",
+    "title": "Creamy Tomato Soup",
+    "slug": "creamy-tomato-soup",
+    "language": "en",
+    "description": "Silky tomato soup with a touch of cream.",
+    "rating": 4.6,
+    "reviewsCount": 19,
+    "prepTime": "5 MIN",
+    "cookTime": "25 MIN",
+    "totalTime": "30 MIN",
+    "servings": 4,
+    "tags": ["soup", "vegetarian"],
+    "images": {
+      "cover": "assets/img/recipes/tomato-soup.jpg",
+      "gallery": [
+        "assets/img/recipes/tomato-soup.jpg",
+        "assets/img/recipes/tomato-soup.jpg",
+        "assets/img/recipes/tomato-soup.jpg"
+      ]
+    },
+    "ingredients": [
+      {"group": "Soup", "items": [
+        {"qty": 1, "unit": "tbsp", "name": "olive oil"},
+        {"qty": 1, "unit": "pc", "name": "onion"},
+        {"qty": 2, "unit": "cloves", "name": "garlic"},
+        {"qty": 800, "unit": "g", "name": "canned tomatoes"},
+        {"qty": 250, "unit": "ml", "name": "vegetable stock"},
+        {"qty": 60, "unit": "ml", "name": "cream"}
+      ]}
+    ],
+    "steps": [
+      {"order": 1, "text": "Sauté onion and garlic."},
+      {"order": 2, "text": "Add tomatoes & stock; simmer 20 min."},
+      {"order": 3, "text": "Blend smooth; stir in cream."}
+    ],
+    "updatedAt": "2025-11-23"
+  },
+  {
+    "id": "classic-guacamole",
+    "title": "Classic Guacamole",
+    "slug": "classic-guacamole",
+    "language": "en",
+    "description": "Fresh avocado dip with lime and cilantro.",
+    "rating": 4.9,
+    "reviewsCount": 45,
+    "prepTime": "10 MIN",
+    "totalTime": "10 MIN",
+    "servings": 4,
+    "tags": ["dip", "vegan"],
+    "images": {
+      "cover": "assets/img/recipes/guacamole.jpg",
+      "gallery": [
+        "assets/img/recipes/guacamole.jpg",
+        "assets/img/recipes/guacamole.jpg",
+        "assets/img/recipes/guacamole.jpg"
+      ]
+    },
+    "ingredients": [
+      {"group": "Mix", "items": [
+        {"qty": 3, "unit": "pc", "name": "ripe avocados"},
+        {"qty": 1, "unit": "pc", "name": "lime, juiced"},
+        {"qty": 0.25, "unit": "cup", "name": "diced red onion"},
+        {"qty": 2, "unit": "tbsp", "name": "cilantro"}
+      ]}
+    ],
+    "steps": [
+      {"order": 1, "text": "Mash avocados."},
+      {"order": 2, "text": "Fold in remaining ingredients; season."}
+    ],
+    "updatedAt": "2025-11-23"
+  },
+  {
+    "id": "simple-okra-stew",
+    "title": "Simple Okra Stew",
+    "slug": "simple-okra-stew",
+    "language": "en",
+    "description": "Comforting tomato okra stew.",
+    "rating": 4.3,
+    "reviewsCount": 8,
+    "prepTime": "10 MIN",
+    "cookTime": "35 MIN",
+    "totalTime": "45 MIN",
+    "servings": 4,
+    "tags": ["stew", "vegetarian"],
+    "images": {
+      "cover": "assets/img/recipes/okra-stew.jpg",
+      "gallery": [
+        "assets/img/recipes/okra-stew.jpg",
+        "assets/img/recipes/okra-stew.jpg",
+        "assets/img/recipes/okra-stew.jpg"
+      ]
+    },
+    "ingredients": [
+      {"group": "Pot", "items": [
+        {"qty": 2, "unit": "tbsp", "name": "oil"},
+        {"qty": 300, "unit": "g", "name": "okra, sliced"},
+        {"qty": 400, "unit": "g", "name": "diced tomatoes"},
+        {"qty": 1, "unit": "pc", "name": "onion"}
+      ]}
+    ],
+    "steps": [
+      {"order": 1, "text": "Sauté onion & okra."},
+      {"order": 2, "text": "Add tomatoes; simmer 30 min."}
+    ],
+    "updatedAt": "2025-11-23"
+  },
+  {
+    "id": "herb-roast-chicken",
+    "title": "Herb Roast Chicken",
+    "slug": "herb-roast-chicken",
+    "language": "en",
+    "description": "Juicy roast chicken with crispy skin.",
+    "rating": 4.8,
+    "reviewsCount": 21,
+    "prepTime": "15 MIN",
+    "cookTime": "1 HRS",
+    "totalTime": "1 HRS 15 MIN",
+    "servings": 6,
+    "tags": ["dinner", "chicken"],
+    "images": {
+      "cover": "assets/img/recipes/roast-chicken.jpg",
+      "gallery": [
+        "assets/img/recipes/roast-chicken.jpg",
+        "assets/img/recipes/roast-chicken.jpg",
+        "assets/img/recipes/roast-chicken.jpg"
+      ]
+    },
+    "ingredients": [
+      {"group": "Bird", "items": [
+        {"qty": 1.5, "unit": "kg", "name": "whole chicken"},
+        {"qty": 2, "unit": "tbsp", "name": "butter"},
+        {"qty": 1, "unit": "tbsp", "name": "mixed herbs"}
+      ]}
+    ],
+    "steps": [
+      {"order": 1, "text": "Rub chicken with butter & herbs."},
+      {"order": 2, "text": "Roast at 200°C ~60 min until 75°C internal."}
+    ],
+    "updatedAt": "2025-11-23"
+  },
+  {
+    "id": "quick-banana-smoothie",
+    "title": "Quick Banana Smoothie",
+    "slug": "quick-banana-smoothie",
+    "language": "en",
+    "description": "5‑minute creamy banana smoothie.",
+    "rating": 4.5,
+    "reviewsCount": 5,
+    "prepTime": "5 MIN",
+    "totalTime": "5 MIN",
+    "servings": 2,
+    "tags": ["drink", "vegetarian"],
+    "images": {
+      "cover": "assets/img/recipes/banana-smoothie.jpg",
+      "gallery": [
+        "assets/img/recipes/banana-smoothie.jpg",
+        "assets/img/recipes/banana-smoothie.jpg",
+        "assets/img/recipes/banana-smoothie.jpg"
+      ]
+    },
+    "ingredients": [
+      {"group": "Blend", "items": [
+        {"qty": 2, "unit": "pc", "name": "bananas"},
+        {"qty": 250, "unit": "ml", "name": "milk"},
+        {"qty": 1, "unit": "tbsp", "name": "honey"}
+      ]}
+    ],
+    "steps": [
+      {"order": 1, "text": "Blend all until smooth."}
+    ],
+    "updatedAt": "2025-11-23"
+  }
+]
