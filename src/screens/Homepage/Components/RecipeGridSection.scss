@@ -1,0 +1,84 @@
+@import '../../../assets/data/basics.scss';
+
+.recipe-grid-section {
+  margin-bottom: 60px;
+}
+
+.hp-title {
+  font-family: $font-heading;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: $color-black;
+}
+
+.hp-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.recipe-card {
+  text-decoration: none;
+  display: block;
+  color: inherit;
+
+  &:hover {
+    .recipe-card__title {
+      color: $color-primary;
+    }
+  }
+}
+
+.recipe-card__image-wrap {
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  aspect-ratio: 4/3;
+}
+
+.recipe-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+
+  .recipe-card:hover & {
+    transform: scale(1.05);
+  }
+}
+
+.recipe-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.recipe-card__rating {
+  display: flex;
+  gap: 4px; // Slightly more gap
+  margin-bottom: 8px; // Add space below stars
+  
+  .star-icon {
+    width: 16px; // Slightly larger
+    height: 16px;
+    // Filter to make black SVG orange (#FF642F)
+    filter: invert(55%) sepia(68%) saturate(466%) hue-rotate(329deg) brightness(101%) contrast(101%);
+  }
+}
+
+.recipe-card__title {
+  font-family: $font-heading; // Changed to heading font as per image (serif)
+  font-size: 20px; // Larger
+  font-weight: 600;
+  color: $color-black;
+  margin: 0;
+  line-height: 1.4;
+}

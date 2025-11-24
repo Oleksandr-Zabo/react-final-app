@@ -1,0 +1,91 @@
+@import '../../../assets/data/basics.scss';
+
+.collections-grid {
+  margin-bottom: 60px;
+}
+
+.collections-grid__wrap {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); // 2 columns as per design
+  gap: 30px;
+}
+
+.collection-card {
+  background: #fff;
+  border: none; // Remove border
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: $soft-shadow; // Add shadow
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  }
+}
+
+.collection-card__image-wrap {
+  height: 240px; // Taller images
+  overflow: hidden;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .collection-card:hover & img {
+    transform: scale(1.05);
+  }
+}
+
+.collection-card__body {
+  padding: 24px;
+  display: flex;
+  flex-direction: row; // Change to row
+  align-items: center; // Center vertically
+  justify-content: space-between; // Space between title and pill
+  gap: 16px;
+}
+
+.collection-card__title {
+  font-family: $font-heading;
+  font-size: 20px; // Slightly smaller to fit
+  line-height: 1.3;
+  margin: 0;
+  font-weight: 600;
+  color: $color-black;
+  flex: 1; // Take available space
+}
+
+.pill {
+  display: inline-block;
+  padding: 6px 12px;
+  background: #fff; // White background for pill? Or gray? Image shows white pill on white card? No, maybe light gray.
+  // Actually, looking at the image, the pill looks like a button with a border.
+  border: 1px solid $color-gray-100;
+  background: transparent;
+  color: $color-black;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap; // Prevent wrapping
+}
+
+@media (max-width: 900px) {
+  .collections-grid__wrap {
+    grid-template-columns: 1fr;
+  }
+  .collection-card__image-wrap {
+    height: 200px;
+  }
+}
