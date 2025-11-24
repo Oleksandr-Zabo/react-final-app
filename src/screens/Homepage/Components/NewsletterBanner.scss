@@ -1,0 +1,110 @@
+@import '../../../assets/data/basics.scss';
+
+.newsletter-banner {
+  background: $color-accent; // Use accent color (peach)
+  padding: 80px 0;
+  text-align: center;
+  border-radius: 12px; // More rounded
+  margin-bottom: 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.newsletter-banner__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.newsletter-banner__title {
+  font-family: $font-heading;
+  font-size: 48px;
+  font-weight: 700;
+  margin: 0 0 16px;
+  color: $color-black;
+}
+
+.newsletter-banner__text {
+  font-family: $font-body;
+  font-size: 16px;
+  color: $color-gray;
+  margin: 0 0 40px;
+  line-height: 1.5;
+}
+
+.newsletter-banner__form {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  width: 100%;
+  margin: 0 auto 16px;
+  box-shadow: $soft-shadow;
+  border-radius: 6px;
+  overflow: hidden;
+
+  input {
+    flex: 1;
+    padding: 18px 24px;
+    border: none;
+    font-size: 16px;
+    font-family: $font-body;
+    outline: none;
+    color: $color-black;
+
+    &::placeholder {
+      color: $color-gray;
+    }
+  }
+
+  button {
+    padding: 18px 32px;
+    background: $color-primary;
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: darken($color-primary, 5%);
+    }
+  }
+}
+
+.newsletter-banner__legal {
+  display: block;
+  font-size: 12px;
+  color: $color-gray;
+  margin-top: 16px;
+}
+
+@media (max-width: 700px) {
+  .newsletter-banner {
+    padding: 60px 0;
+  }
+  .newsletter-banner__title {
+    font-size: 32px;
+  }
+  .newsletter-banner__form {
+    flex-direction: column;
+    box-shadow: none;
+    background: transparent;
+    
+    input {
+      border-radius: 6px;
+      margin-bottom: 12px;
+      box-shadow: $soft-shadow;
+    }
+    
+    button {
+      border-radius: 6px;
+      width: 100%;
+      box-shadow: $soft-shadow;
+    }
+  }
+}

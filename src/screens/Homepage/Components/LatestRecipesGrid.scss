@@ -1,0 +1,81 @@
+@import '../../../assets/data/basics.scss';
+
+.latest-recipes-grid {
+  margin-bottom: 60px;
+}
+
+.latest-recipes-grid__wrap {
+  // Grid layout is handled by .hp-grid-4 in home.module.scss
+}
+
+.recipe-card.small {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  background: transparent; // No background
+  border: none; // No border
+  box-shadow: none; // No shadow by default
+
+  &:hover {
+    .recipe-card__title {
+      color: $color-primary;
+    }
+    .recipe-card__image {
+      transform: scale(1.05);
+    }
+  }
+
+  .recipe-card__image-wrap {
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    aspect-ratio: 4/3;
+    position: relative;
+  }
+
+  .recipe-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+    height: auto; // Override fixed height from home.module.scss if needed
+  }
+
+  .recipe-card__body {
+    padding: 0; // Remove padding
+  }
+
+  .recipe-card__title {
+    font-family: $font-body;
+    font-size: 16px;
+    font-weight: 600;
+    color: $color-black;
+    line-height: 1.4;
+    margin: 0;
+  }
+}
+
+.latest-recipes-grid__load {
+  text-align: center;
+  margin-top: 40px;
+
+  button {
+    padding: 12px 32px;
+    border: 2px solid $color-black; // Outline style
+    background: transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: $color-black;
+      color: #fff;
+    }
+  }
+}
