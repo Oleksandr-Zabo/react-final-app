@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getRecipeBySlug } from '../Homepage/recipeData';
-import '../Homepage/home.module.scss';
+import '../Homepage/home.scss';
 
 const RecipeDetail = () => {
   const { slug } = useParams();

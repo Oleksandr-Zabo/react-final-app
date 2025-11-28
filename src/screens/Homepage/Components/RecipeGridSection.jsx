@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../../Homepage/home.module.scss';
+import '../../Homepage/home.scss';
 import './RecipeGridSection.scss';
 import starFill from '../../../assets/img/icons/star-fill.svg';
 import starEmpty from '../../../assets/img/icons/star.svg';

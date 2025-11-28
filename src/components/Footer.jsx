@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './Footer.scss';
 
 import logo from '../assets/img/components/logo.svg';
@@ -51,10 +51,10 @@ const Footer = () => {
 					</div>
 					<div className={`section-content ${expanded.tastebite ? 'expanded' : 'collapsed'}`}>
 						<ul>
-							<li><Link to="/about">About us</Link></li>
-							<li><Link to="/careers">Careers</Link></li>
-							<li><Link to="/contact">Contact Us</Link></li>
-							<li><Link to="/feedback">Feedback</Link></li>
+							<li><NavLink to="/about">About us</NavLink></li>
+							<li><NavLink to="/careers">Careers</NavLink></li>
+							<li><NavLink to="/contact">Contact Us</NavLink></li>
+							<li><NavLink to="/feedback">Feedback</NavLink></li>
 						</ul>
 					</div>
 				</div>
@@ -68,10 +68,10 @@ const Footer = () => {
 					</div>
 					<div className={`section-content ${expanded.legal ? 'expanded' : 'collapsed'}`}>
 						<ul>
-							<li><Link to="/terms">Terms</Link></li>
-							<li><Link to="/conditions">Conditions</Link></li>
-							<li><Link to="/cookies">Cookies</Link></li>
-							<li><Link to="/copyright">Copyright</Link></li>
+							<li><NavLink to="/terms">Terms</NavLink></li>
+							<li><NavLink to="/conditions">Conditions</NavLink></li>
+							<li><NavLink to="/cookies">Cookies</NavLink></li>
+							<li><NavLink to="/copyright">Copyright</NavLink></li>
 						</ul>
 					</div>
 				</div>

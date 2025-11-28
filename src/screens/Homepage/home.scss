@@ -3,12 +3,27 @@
 // Shared layout variables for homepage
 $hp-grid-gap: 32px;
 $hp-section-margin: 64px;
-$hp-max-width: 1140px;
+$hp-max-width: 1440px;
+$hp-primary-width: 1110px;
 
 .homepage-container {
 	max-width: $hp-max-width;
 	margin: 0 auto;
-	padding: 0 20px 80px;
+	padding: 0 0 80px;
+
+	> * {
+		max-width: $hp-primary-width;
+		width: calc(100% - 30px);
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	> .newsletter-banner {
+		max-width: $hp-max-width;
+		width: calc(100% - 60px);
+		margin-left: auto;
+		margin-right: auto;
+	}
 }
 
 .hp-section { margin-top: $hp-section-margin; }
@@ -80,6 +95,12 @@ $hp-max-width: 1140px;
 	.recipe-card__image { height:140px; }
 }
 @media (max-width: 600px) {
-	.homepage-container { padding:0 16px 60px; }
+	.homepage-container { padding:0 15px 60px; }
 	.hp-section { margin-top:48px; }
+}
+
+.page-content {
+	max-width: $hp-max-width;
+	margin: 0 auto;
+	padding: 0 15px;
 }

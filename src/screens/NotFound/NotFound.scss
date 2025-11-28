@@ -1,0 +1,50 @@
+@import '../../assets/data/basics.scss';
+
+.not-found-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+  padding: 40px 15px;
+}
+
+.not-found-content {
+  h1 {
+    font-family: $font-heading;
+    font-size: 120px;
+    font-weight: 900;
+    color: $color-primary;
+    margin: 0;
+    line-height: 1;
+  }
+
+  h2 {
+    font-family: $font-heading;
+    font-size: 32px;
+    margin: 20px 0;
+    color: $color-black;
+  }
+
+  p {
+    font-family: $font-body;
+    font-size: 18px;
+    color: $color-gray;
+    margin-bottom: 40px;
+  }
+
+  .home-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: $color-black;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: $color-primary;
+    }
+  }
+}

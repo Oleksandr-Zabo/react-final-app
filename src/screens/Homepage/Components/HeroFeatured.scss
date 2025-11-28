@@ -89,6 +89,9 @@
   .hero-featured {
     grid-template-columns: 1fr;
   }
+  .hero-featured__image {
+    min-height: 250px;
+  }
   .hero-featured__content {
     padding: 32px 24px;
   }

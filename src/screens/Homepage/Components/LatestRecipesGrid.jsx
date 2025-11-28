@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../../Homepage/home.module.scss';
+import '../../Homepage/home.scss';
 import './LatestRecipesGrid.scss';
 
 const LatestRecipesGrid = ({ initialRecipes }) => {

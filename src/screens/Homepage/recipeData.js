@@ -57,6 +57,30 @@ export const getCategories = () => [
   { id: 'smoothies', name: 'Smoothies', image: bananaSmoothie },
   { id: 'breakfast', name: 'Breakfast', image: breakfastBurger }
 ];
+
+export const getAllCategories = () => [
+  { id: 'seafood', name: 'Seafood', image: okraStew },
+  { id: 'soup', name: 'Soup', image: tomatoSoup },
+  { id: 'pancakes', name: 'Pancakes', image: donuts },
+  { id: 'meat', name: 'Meat', image: roastChicken },
+  { id: 'chicken', name: 'Chicken', image: roastChicken },
+  { id: 'less-30', name: 'Less than 30 min', image: spinachPasta },
+  { id: 'pasta', name: 'Pasta', image: spinachPasta },
+  { id: 'pizza', name: 'Pizza', image: spinachPasta },
+  { id: 'cake', name: 'Cake', image: cheesecakeLarge },
+  { id: 'pastries', name: 'Pastries', image: donuts },
+  { id: 'burger', name: 'Burger', image: breakfastBurger },
+  { id: 'vegan', name: 'Vegan', image: guacamole },
+  { id: 'desserts', name: 'Desserts', image: cheesecakeLarge },
+  { id: 'smoothies', name: 'Smoothies', image: bananaSmoothie },
+  { id: 'breakfast', name: 'Breakfast', image: breakfastBurger },
+  { id: 'salad', name: 'Salad', image: guacamole },
+  { id: 'sandwiches', name: 'Sandwiches', image: breakfastBurger },
+  { id: 'waffles', name: 'Waffles', image: donuts },
+  { id: 'ramen', name: 'Ramen', image: okraStew },
+  { id: 'dips', name: 'Dips', image: guacamole }
+];
+
 export const getCollections = () => [
   { id: 'sushi-combos', title: 'Sushi Combos for your Next Party', image: roastChicken, count: 156 },
   { id: 'everything-bagel', title: 'Everything Bagel', image: donuts, count: 156 },

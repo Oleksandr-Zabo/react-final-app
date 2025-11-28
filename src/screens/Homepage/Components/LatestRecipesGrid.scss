@@ -5,7 +5,19 @@
 }
 
 .latest-recipes-grid__wrap {
-  // Grid layout is handled by .hp-grid-4 in home.module.scss
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px; // Match design gap
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .recipe-card.small {
@@ -13,9 +25,9 @@
   color: inherit;
   display: flex;
   flex-direction: column;
-  background: transparent; // No background
-  border: none; // No border
-  box-shadow: none; // No shadow by default
+  background: transparent;
+  border: none;
+  box-shadow: none;
 
   &:hover {
     .recipe-card__title {
@@ -30,7 +42,8 @@
     border-radius: 8px;
     overflow: hidden;
     margin-bottom: 12px;
-    aspect-ratio: 4/3;
+    height: 190px; // Fixed height as requested
+    width: 100%;
     position: relative;
   }
 
@@ -40,8 +53,8 @@
     object-fit: cover;
     display: block;
     transition: transform 0.3s ease;
-    height: auto; // Override fixed height from home.module.scss if needed
   }
+
 
   .recipe-card__body {
     padding: 0; // Remove padding

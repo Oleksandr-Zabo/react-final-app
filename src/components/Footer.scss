@@ -61,7 +61,15 @@
 				li { margin: 8px 0; }
 
 				/* make anchors block-level so all lists align on the same vertical line */
-				a { color: $color-gray; text-decoration: none; display: block; }
+				a { 
+					color: $color-gray; 
+					text-decoration: none; 
+					display: block; 
+
+					&:hover, &.active {
+						color: $color-primary;
+					}
+				}
 			}
 		}
 
@@ -77,7 +85,15 @@
 				li { margin: 8px 0; }
 
 				/* Follow should use same color as legal links and align like other lists */
-				a { color: $color-gray; text-decoration: none; display: block; }
+				a { 
+					color: $color-gray; 
+					text-decoration: none; 
+					display: block; 
+
+					&:hover, &.active {
+						color: $color-primary;
+					}
+				}
 			}
 		}
 	}
@@ -119,8 +135,11 @@
 
 		.footer-col {
 			width: 100%;
+			flex: 0 0 auto !important; /* Force reset flex basis to auto so height is not fixed */
 			padding: 0; /* move padding to header/content so collapsed state has no extra space */
+			margin-bottom: 20px;
 			border-bottom: none;
+			min-height: 0;
 		}
 
 		/* Brand stays on top with full quote width */
@@ -132,46 +151,42 @@
 
 		/* Make headings look like toggle rows with a right chevron */
 		/* header button used by JSX for mobile toggles */
-		/* Desktop: ensure the section-button looks like plain text (no default button chrome)
-		   Mobile rules below override padding/borders for touch targets. */
-		.section-button { background: transparent; border: none; padding: 0; cursor: pointer; }
+		.section-button { 
+			background: transparent; 
+			border: none; 
+			padding: 15px 0; 
+			cursor: pointer; 
+			display: flex; 
+			justify-content: space-between; 
+			align-items: center; 
+			width: 100%;
+		}
+		
 		.section-title { color: $color-black; font-size: 18px; font-weight: 600; }
 
 		/* add header border so collapsed sections still show separator */
-		.section-header { border-bottom: 1px solid $color-gray-100; padding: 0 0; }
-
-		.footer-col .footer-title {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			font-size: 18px;
-			margin: 0 0 8px 0;
-			padding: 0 16px 0 0;
-		}
-
-		.footer-col .footer-title::after {
-			content: '';
-			display: inline-block;
-			width: 18px; height: 18px;
-			background-image: url('../assets/img/icons/chevron-down.svg');
-			background-size: contain;
-			background-repeat: no-repeat;
-			opacity: 0.9;
-		}
+		.section-header { border-bottom: 1px solid $color-gray-100; padding: 0; }
 
 		/* Lists: larger touch area and consistent left padding */
 		.footer-col ul,
 		.footer-col .follow-list {
-			padding: 0 0 0 8px;
-			margin: 0;
+			padding: 0;
+			margin: 10px 0 0 0;
 		}
 
 		/* accordion behavior: hide collapsed sections on mobile */
 		.section-content.collapsed { display: none; }
-		.section-content.expanded { display: block; padding: 12px 0 18px; }
+		.section-content.expanded { display: block; padding: 0 0 18px; }
 
 		/* chevron img rotation when open */
-		.chev { width:18px; height:18px; transform: rotate(0deg); transition: transform .15s ease; }
+		.chev { 
+			display: block; 
+			width: 20px; 
+			height: 20px; 
+			transform: rotate(0deg); 
+			transition: transform .2s ease; 
+			margin-left: auto; /* Ensure it stays on the right */
+		}
 		.chev.open { transform: rotate(180deg); }
 
 		.footer-col ul li,
@@ -190,13 +205,26 @@
 		.footer-bottom-inner {
 			display: flex;
 			flex-direction: column;
-			align-items: center;
+			align-items: flex-start !important;
 			gap: 16px;
-			padding: 20px 0 8px;
+			padding: 20px 20px;
+			text-align: left;
 		}
 
-		.social-small { order: 2; }
-		.copyright { order: 1; color: $color-gray-100; }
+		.social-small { 
+			order: 1; 
+			justify-content: flex-start;
+			margin-left: 14px;
+			width: auto;
+		}
+		
+		.copyright { 
+			order: 2; 
+			margin-left: 14px;
+			color: $color-gray; 
+			text-align: left;
+			width: auto;
+		}
 	}
 }
 

@@ -1,0 +1,65 @@
+@import '../../../assets/data/basics.scss';
+
+.hero-three-col {
+  margin-top: 40px; // Adjust as needed
+
+  .hp-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+    
+    @media (max-width: 900px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.hero-card {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  
+  &:hover {
+    .hero-card__title {
+      color: $color-primary;
+    }
+    .hero-card__image {
+      transform: scale(1.05);
+    }
+  }
+
+  &__image-wrapper {
+    width: 100%;
+    height: 240px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  &__rating {
+    color: $color-primary;
+    font-size: 14px;
+    margin-bottom: 8px;
+    
+    .rating-inactive {
+      color: $color-gray-100;
+    }
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: 20px;
+    font-weight: 600;
+    color: $color-black;
+    margin: 0;
+    line-height: 1.4;
+  }
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../../Homepage/home.module.scss';
+import '../../Homepage/home.scss';
 import './HeroFeatured.scss';
 import trendingUp from '../../../assets/img/icons/trending-up.svg';
 import arrowRight from '../../../assets/img/icons/arrow-right.svg';
@@ -17,7 +17,7 @@ const HeroFeatured = ({ recipe }) => {
           <img src={trendingUp} alt="Trending" />
           <span>{recipe.wouldMakePercent}% would make this again</span>
         </div>
-        <h1 className="hero-featured__title">{recipe.title.replace('Strawberry Cream ', 'Mighty Super ')}</h1>
+        <h1 className="hero-featured__title">{recipe.title}</h1>
         <p className="hero-featured__desc">{recipe.description}</p>
         <Link to={`/recipe/${recipe.slug}`} className="hero-featured__cta" aria-label={`View ${recipe.title}`}>
           <img src={arrowRight} alt="Go" />

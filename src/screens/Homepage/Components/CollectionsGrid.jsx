@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../Homepage/home.module.scss';
+import '../../Homepage/home.scss';
 import './CollectionsGrid.scss';
 
 const CollectionsGrid = ({ collections }) => {

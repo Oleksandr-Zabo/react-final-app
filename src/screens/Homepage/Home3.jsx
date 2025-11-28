@@ -7,33 +7,41 @@ import NewsletterBanner from './Components/NewsletterBanner';
 import CollectionsGrid from './Components/CollectionsGrid';
 import LatestRecipesGrid from './Components/LatestRecipesGrid';
 import { 
-  getFeaturedRecipe, 
-  getTopRecipes, 
-  getSweetTooth, 
+  getAllRecipes,
   getCategories, 
   getCollections, 
   getLatestRecipes 
 } from './recipeData';
 
-const Home = () => {
-  const featured = getFeaturedRecipe();
-  const superDelicious = getTopRecipes();
-  const sweetTooth = getSweetTooth();
+const Home3 = () => {
+  const allRecipes = getAllRecipes();
+  
+  // Mocking the "Cinnamon Apple Loaded Tart" using an existing recipe as base
+  const baseFeatured = allRecipes.find(r => r.id === 'strawberry-cream-cheesecake') || allRecipes[0];
+  const featured = {
+    ...baseFeatured,
+    title: "Cinnamon Apple Loaded Tart",
+    wouldMakePercent: 85,
+    // We keep the image of the cheesecake as it looks like a tart
+  };
+  
+  // Super Delicious: 6 recipes
+  const superDelicious = allRecipes.slice(0, 6);
+  
   const categories = getCategories();
   const collections = getCollections();
   const latest = getLatestRecipes();
 
   return (
-    <div className="homepage-container">
+    <div className="homepage-container home3">
       <HeroFeatured recipe={featured} />
-      <RecipeGridSection title="Super Delicious" recipes={superDelicious} />
-      <RecipeGridSection title="Sweet Tooth" recipes={sweetTooth} />
       <CategoriesStrip categories={categories} />
-      <NewsletterBanner />
+      <RecipeGridSection title="Super Delicious" recipes={superDelicious} />
       <CollectionsGrid collections={collections} />
       <LatestRecipesGrid initialRecipes={latest} />
+      <NewsletterBanner />
     </div>
   );
 };
 
-export default Home;
+export default Home3;
