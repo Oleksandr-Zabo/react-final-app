@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { getAllRecipes } from '../Homepage/recipeData';
 import './SearchResults.scss';
@@ -10,7 +10,7 @@ const SearchResults = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [results, setResults] = useState([]);
   const [visibleCount, setVisibleCount] = useState(12);
-  const allRecipes = getAllRecipes();
+  const allRecipes = useMemo(() => getAllRecipes(), []);
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
