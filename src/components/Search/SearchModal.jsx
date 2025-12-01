@@ -9,6 +9,14 @@ const SearchModal = ({ isOpen, onClose }) => {
   const [results, setResults] = useState([]);
   const allRecipes = useMemo(() => getAllRecipes(), []);
   const navigate = useNavigate();
+  const inputRef = useRef(null);
+
+  // Focus the input when the panel opens
+  useEffect(() => {
+    if (isOpen && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [isOpen]);
 
   useEffect(() => {
     if (searchTerm.trim() === '') {
@@ -58,20 +66,30 @@ const SearchModal = ({ isOpen, onClose }) => {
     if (e.key === 'Enter' && searchTerm.trim()) {
         handleSeeAll();
     }
+    if (e.key === 'Escape') {
+        onClose();
+    }
   };
 
   // if (!isOpen) return null; // Removed to keep it in DOM
 
   return (
-    <div className={`search-panel ${isOpen ? 'open' : ''}`} onClick={e => e.stopPropagation()}>
+    <div 
+      className={`search-panel ${isOpen ? 'open' : ''}`} 
+      onClick={e => e.stopPropagation()}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Search recipes"
+    >
       <div className="search-header">
         <input 
+          ref={inputRef}
           type="text" 
           placeholder="Search recipes, categories..." 
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           onKeyDown={handleKeyDown}
-          // autoFocus // autoFocus might not work if initially hidden, need to handle focus when opened
+          aria-label="Search input"
         />
         <button className="close-btn" onClick={onClose}>
           <img src={closeIcon} alt="Close" />
