@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import './Modal.scss';
 import closeIcon from '../../assets/img/icons/x.svg';
@@ -6,13 +6,66 @@ import closeIcon from '../../assets/img/icons/x.svg';
 // Module-level counter for open modals
 let openModalCount = 0;
 
+const FOCUSABLE_ELEMENTS_SELECTOR = 
+  'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+
 const Modal = ({ isOpen, onClose, children, title, showCloseBtn = true }) => {
+  const modalRef = useRef(null);
+  const previousActiveElement = useRef(null);
+
+  // Handle Escape key press
+  const handleKeyDown = useCallback((e) => {
+    if (e.key === 'Escape') {
+      onClose();
+      return;
+    }
+
+    // Focus trap: handle Tab key
+    if (e.key === 'Tab' && modalRef.current) {
+      const focusableElements = modalRef.current.querySelectorAll(FOCUSABLE_ELEMENTS_SELECTOR);
+      const firstFocusable = focusableElements[0];
+      const lastFocusable = focusableElements[focusableElements.length - 1];
+
+      if (e.shiftKey) {
+        // Shift + Tab: if focus is on first element, move to last
+        if (document.activeElement === firstFocusable) {
+          e.preventDefault();
+          lastFocusable?.focus();
+        }
+      } else {
+        // Tab: if focus is on last element, move to first
+        if (document.activeElement === lastFocusable) {
+          e.preventDefault();
+          firstFocusable?.focus();
+        }
+      }
+    }
+  }, [onClose]);
+
   useEffect(() => {
     if (isOpen) {
       openModalCount += 1;
       if (openModalCount === 1) {
         document.body.style.overflow = 'hidden';
       }
+
+      // Store currently focused element to restore later
+      previousActiveElement.current = document.activeElement;
+
+      // Focus the first focusable element in the modal
+      const timer = setTimeout(() => {
+        if (modalRef.current) {
+          const focusableElements = modalRef.current.querySelectorAll(FOCUSABLE_ELEMENTS_SELECTOR);
+          if (focusableElements.length > 0) {
+            focusableElements[0].focus();
+          } else {
+            // If no focusable elements, focus the modal container itself
+            modalRef.current.focus();
+          }
+        }
+      }, 0);
+
+      return () => clearTimeout(timer);
     }
     return () => {
       if (isOpen) {
@@ -20,6 +73,8 @@ const Modal = ({ isOpen, onClose, children, title, showCloseBtn = true }) => {
         if (openModalCount === 0) {
           document.body.style.overflow = 'unset';
         }
+        // Restore focus to the previously focused element
+        previousActiveElement.current?.focus();
       }
     };
   }, [isOpen]);
@@ -28,13 +83,22 @@ const Modal = ({ isOpen, onClose, children, title, showCloseBtn = true }) => {
 
   return ReactDOM.createPortal(
     <div className={`modal-overlay ${isOpen ? 'is-open' : ''}`} onClick={onClose}>
-      <div className="modal-container" onClick={(e) => e.stopPropagation()}>
+      <div
+        ref={modalRef}
+        className="modal-container"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={title ? 'modal-title' : undefined}
+        tabIndex={-1}
+        onClick={(e) => e.stopPropagation()}
+        onKeyDown={handleKeyDown}
+      >
         {showCloseBtn && (
           <button className="modal-close-btn" onClick={onClose}>
             <img src={closeIcon} alt="Close" />
           </button>
         )}
-        {title && <h3 className="modal-title">{title}</h3>}
+        {title && <h3 id="modal-title" className="modal-title">{title}</h3>}
         {children}
       </div>
     </div>,
