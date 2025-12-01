@@ -9,11 +9,17 @@ let openModalCount = 0;
 const FOCUSABLE_ELEMENTS_SELECTOR =
   'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
+// Helper function to get focusable elements within a container
+const getFocusableElements = (container) => {
+  if (!container) return [];
+  return Array.from(container.querySelectorAll(FOCUSABLE_ELEMENTS_SELECTOR));
+};
+
 const Modal = ({ isOpen, onClose, children, title, showCloseBtn = true }) => {
   const modalRef = useRef(null);
   const previouslyFocusedElement = useRef(null);
 
-  // Handle ESC key press
+  // Handle ESC key press and focus trap
   const handleKeyDown = useCallback(
     (event) => {
       if (event.key === 'Escape') {
@@ -23,9 +29,14 @@ const Modal = ({ isOpen, onClose, children, title, showCloseBtn = true }) => {
 
       // Focus trap: handle Tab key
       if (event.key === 'Tab' && modalRef.current) {
-        const focusableElements = modalRef.current.querySelectorAll(
-          FOCUSABLE_ELEMENTS_SELECTOR
-        );
+        const focusableElements = getFocusableElements(modalRef.current);
+
+        // If no focusable elements, prevent tab from leaving modal
+        if (focusableElements.length === 0) {
+          event.preventDefault();
+          return;
+        }
+
         const firstElement = focusableElements[0];
         const lastElement = focusableElements[focusableElements.length - 1];
 
@@ -33,13 +44,13 @@ const Modal = ({ isOpen, onClose, children, title, showCloseBtn = true }) => {
           // Shift + Tab: if on first element, wrap to last
           if (document.activeElement === firstElement) {
             event.preventDefault();
-            lastElement?.focus();
+            lastElement.focus();
           }
         } else {
           // Tab: if on last element, wrap to first
           if (document.activeElement === lastElement) {
             event.preventDefault();
-            firstElement?.focus();
+            firstElement.focus();
           }
         }
       }
@@ -59,16 +70,12 @@ const Modal = ({ isOpen, onClose, children, title, showCloseBtn = true }) => {
 
       // Focus the first focusable element in the modal
       const focusFirstElement = () => {
-        if (modalRef.current) {
-          const focusableElements = modalRef.current.querySelectorAll(
-            FOCUSABLE_ELEMENTS_SELECTOR
-          );
-          if (focusableElements.length > 0) {
-            focusableElements[0].focus();
-          } else {
-            // If no focusable elements, focus the modal container itself
-            modalRef.current.focus();
-          }
+        const focusableElements = getFocusableElements(modalRef.current);
+        if (focusableElements.length > 0) {
+          focusableElements[0].focus();
+        } else if (modalRef.current) {
+          // If no focusable elements, focus the modal container itself
+          modalRef.current.focus();
         }
       };
 
