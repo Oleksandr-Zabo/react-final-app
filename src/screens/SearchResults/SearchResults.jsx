@@ -4,12 +4,14 @@ import { getAllRecipes } from '../Homepage/recipeData';
 import './SearchResults.scss';
 import closeIcon from '../../assets/img/icons/x.svg';
 
+const PAGE_SIZE = 12;
+
 const SearchResults = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
   const [results, setResults] = useState([]);
-  const [visibleCount, setVisibleCount] = useState(12);
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const allRecipes = getAllRecipes();
 
   useEffect(() => {
@@ -31,7 +33,7 @@ const SearchResults = () => {
         return inTitle || inTags;
     });
     setResults(filtered);
-    setVisibleCount(12); // Reset visible count on new search
+    setVisibleCount(PAGE_SIZE); // Reset visible count on new search
   }, [searchTerm, allRecipes]);
 
   const handleSearchChange = (e) => {
@@ -94,7 +96,7 @@ const SearchResults = () => {
 
         {canLoadMore && (
             <div className="load-more-container">
-                <button className="load-more-btn" onClick={() => setVisibleCount(prev => prev + 12)}>
+                <button className="load-more-btn" onClick={() => setVisibleCount(prev => prev + PAGE_SIZE)}>
                     Load More
                 </button>
             </div>
