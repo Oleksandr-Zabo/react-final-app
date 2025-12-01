@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './SearchModal.scss';
 import { getAllRecipes } from '../../screens/Homepage/recipeData';
 import closeIcon from '../../assets/img/icons/x.svg';
@@ -8,6 +8,7 @@ const SearchModal = ({ isOpen, onClose }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [results, setResults] = useState([]);
   const allRecipes = getAllRecipes();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (searchTerm.trim() === '') {
@@ -48,30 +49,41 @@ const SearchModal = ({ isOpen, onClose }) => {
     setResults(formattedResults);
   }, [searchTerm, allRecipes]);
 
-  if (!isOpen) return null;
+  const handleSeeAll = () => {
+    navigate(`/search?q=${encodeURIComponent(searchTerm)}`);
+    onClose();
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && searchTerm.trim()) {
+        handleSeeAll();
+    }
+  };
+
+  // if (!isOpen) return null; // Removed to keep it in DOM
 
   return (
-    <div className="search-modal-overlay" onClick={onClose}>
-      <div className="search-modal" onClick={e => e.stopPropagation()}>
-        <div className="search-header">
-          <input 
-            type="text" 
-            placeholder="Search recipes, categories..." 
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            autoFocus
-          />
-          <button className="close-btn" onClick={onClose}>
-            <img src={closeIcon} alt="Close" />
-          </button>
-        </div>
-        
-        <div className="search-results">
+    <div className={`search-panel ${isOpen ? 'open' : ''}`} onClick={e => e.stopPropagation()}>
+      <div className="search-header">
+        <input 
+          type="text" 
+          placeholder="Search recipes, categories..." 
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          onKeyDown={handleKeyDown}
+          // autoFocus // autoFocus might not work if initially hidden, need to handle focus when opened
+        />
+        <button className="close-btn" onClick={onClose}>
+          <img src={closeIcon} alt="Close" />
+        </button>
+      </div>
+      
+      <div className="search-results">
             {searchTerm && results.length === 0 && (
                 <div className="no-results">No results found for "{searchTerm}"</div>
             )}
             
-            {results.map((result, index) => {
+            {results.slice(0, 6).map((result, index) => {
                 if (result.type === 'category') {
                     return (
                         <div key={`cat-${index}`} className="search-result-item category">
@@ -108,13 +120,14 @@ const SearchModal = ({ isOpen, onClose }) => {
                 }
             })}
             
-            {results.length > 0 && (
-                <button className="see-all-btn">
-                    See all {results.length} results
-                </button>
+            {results.length > 6 && (
+                <div className="see-all-container">
+                    <button className="see-all-btn" onClick={handleSeeAll}>
+                        See all {results.length} results
+                    </button>
+                </div>
             )}
         </div>
-      </div>
     </div>
   );
 };
