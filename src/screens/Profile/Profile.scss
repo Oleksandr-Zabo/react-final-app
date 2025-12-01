@@ -1,0 +1,313 @@
+@import '../../assets/data/basics.scss';
+
+.profile-page {
+    padding: 60px 0 100px;
+    font-family: 'Inter', sans-serif;
+    color: #333;
+
+    .container {
+        max-width: $content-width;
+        margin: 0 auto;
+        padding: 0;
+
+        @media (max-width: 1150px) {
+            padding: 0 20px;
+        }
+    }
+
+    .profile-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 60px;
+
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .save-btn {
+            background-color: $color-primary;
+            color: white;
+            border: none;
+            padding: 12px 40px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.2s;
+
+            &:hover {
+                background-color: darken($color-primary, 10%);
+            }
+        }
+    }
+
+    .profile-content {
+        max-width: 800px; // Limit content width for better readability as per design
+    }
+
+    .avatar-section {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        margin-bottom: 60px;
+
+        .avatar-wrapper {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .avatar-actions {
+            display: flex;
+            gap: 20px;
+
+            button {
+                padding: 10px 24px;
+                border-radius: 4px;
+                font-weight: 600;
+                font-size: 14px;
+                cursor: pointer;
+                transition: all 0.2s;
+            }
+
+            .change-photo-btn {
+                background-color: $color-primary;
+                color: white;
+                border: none;
+
+                &:hover {
+                    background-color: darken($color-primary, 10%);
+                }
+            }
+
+            .delete-photo-btn {
+                background-color: white;
+                color: #666;
+                border: 1px solid #ddd;
+
+                &:hover {
+                    border-color: #999;
+                    color: #333;
+                }
+            }
+        }
+    }
+
+    .form-section {
+        margin-bottom: 60px;
+
+        .form-row {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 30px;
+
+            @media (max-width: 768px) {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .form-group {
+                flex: 1;
+
+                label {
+                    display: block;
+                    font-size: 12px;
+                    color: #888;
+                    margin-bottom: 8px;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                }
+
+                .input-wrapper {
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    border-bottom: 1px solid #ddd;
+                    padding-bottom: 8px;
+
+                    .input-icon {
+                        width: 20px;
+                        height: 20px;
+                        opacity: 0.5;
+                        margin-right: 12px;
+                    }
+
+                    input {
+                        flex: 1;
+                        border: none;
+                        font-size: 16px;
+                        color: #333;
+                        outline: none;
+                        font-family: inherit;
+                        background: transparent;
+
+                        &::placeholder {
+                            color: #ccc;
+                        }
+                    }
+
+                    .change-link {
+                        background: none;
+                        border: none;
+                        color: $color-primary;
+                        font-size: 12px;
+                        font-weight: 600;
+                        cursor: pointer;
+                        padding: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .connected-accounts {
+        margin-bottom: 60px;
+
+        h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .account-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #f5f5f5;
+
+            .account-info {
+                display: flex;
+                align-items: center;
+                gap: 16px;
+
+                .account-icon {
+                    width: 24px;
+                    height: 24px;
+                }
+
+                .account-details {
+                    display: flex;
+                    flex-direction: column;
+
+                    .account-name {
+                        font-weight: 600;
+                        font-size: 16px;
+                        color: #333;
+                    }
+
+                    .account-sub {
+                        font-size: 14px;
+                        color: #888;
+                    }
+                }
+            }
+
+            .disconnect-btn {
+                background: none;
+                border: none;
+                color: #333;
+                font-weight: 600;
+                font-size: 14px;
+                cursor: pointer;
+
+                &.connect {
+                    color: $color-primary;
+                }
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+    .newsletter-section {
+        margin-bottom: 80px;
+
+        h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .newsletter-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            p {
+                color: #333;
+                font-size: 16px;
+            }
+
+            .unsubscribe-btn {
+                padding: 10px 24px;
+                background: white;
+                border: 1px solid #000;
+                border-radius: 4px;
+                font-weight: 600;
+                font-size: 14px;
+                cursor: pointer;
+                transition: all 0.2s;
+
+                &:hover {
+                    background-color: #f5f5f5;
+                }
+            }
+        }
+    }
+
+    .profile-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid #eee;
+        padding-top: 30px;
+
+        .sign-out-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+
+            img {
+                width: 20px;
+                height: 20px;
+            }
+
+            &:hover {
+                color: $color-primary;
+            }
+        }
+
+        .delete-account-btn {
+            background: none;
+            border: none;
+            color: #ff642f; // Brand orange or red
+            font-weight: 500;
+            font-size: 16px;
+            cursor: pointer;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

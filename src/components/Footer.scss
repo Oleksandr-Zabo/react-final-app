@@ -17,12 +17,19 @@
 	.section-content { display: block; }
 
 	.footer-inner {
+		max-width: $content-width;
+		margin: 0 auto;
 		display: flex;
 		gap: 32px;
 		align-items: flex-start;
 		justify-content: space-between;
 		padding-bottom: 40px;
 		border-bottom: 1px solid $color-gray-100;
+
+		@media (max-width: 1150px) {
+			padding-left: 20px;
+			padding-right: 20px;
+		}
 	}
 
 	.footer-col {

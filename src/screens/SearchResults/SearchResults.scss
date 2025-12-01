@@ -5,9 +5,13 @@
     min-height: 60vh;
 
     .container {
-        max-width: 1200px;
+        max-width: $content-width;
         margin: 0 auto;
-        padding: 0 20px;
+        padding: 0;
+
+        @media (max-width: 1150px) {
+            padding: 0 20px;
+        }
     }
 
     .page-title {
