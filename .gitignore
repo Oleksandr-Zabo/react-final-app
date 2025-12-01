@@ -24,3 +24,4 @@ yarn-error.log*
 
 # Figma Data
 FinalFigmaData/
+node_modules
