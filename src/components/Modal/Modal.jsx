@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useCallback } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import './Modal.scss';
 import closeIcon from '../../assets/img/icons/x.svg';
@@ -71,21 +71,6 @@ const Modal = ({ isOpen, onClose, children, title, showCloseBtn = true }) => {
 
       // Store currently focused element to restore later
       previousActiveElement.current = document.activeElement;
-
-      // Focus the first focusable element in the modal
-      const timer = setTimeout(() => {
-        if (modalRef.current) {
-          const focusableElements = modalRef.current.querySelectorAll(FOCUSABLE_ELEMENTS_SELECTOR);
-          if (focusableElements.length > 0) {
-            focusableElements[0].focus();
-          } else {
-            // If no focusable elements, focus the modal container itself
-            modalRef.current.focus();
-          }
-        }
-      }, 0);
-
-      return () => clearTimeout(timer);
     }
     return () => {
       if (isOpen) {
@@ -97,6 +82,19 @@ const Modal = ({ isOpen, onClose, children, title, showCloseBtn = true }) => {
         previousActiveElement.current?.focus();
       }
     };
+  }, [isOpen]);
+
+  // Use useLayoutEffect for focus management to ensure DOM is ready
+  useLayoutEffect(() => {
+    if (isOpen && modalRef.current) {
+      const focusableElements = modalRef.current.querySelectorAll(FOCUSABLE_ELEMENTS_SELECTOR);
+      if (focusableElements.length > 0) {
+        focusableElements[0].focus();
+      } else {
+        // If no focusable elements, focus the modal container itself
+        modalRef.current.focus();
+      }
+    }
   }, [isOpen]);
 
   if (!isOpen) return null;
