@@ -86,7 +86,12 @@ const SearchModal = ({ isOpen, onClose }) => {
             {results.slice(0, 6).map((result, index) => {
                 if (result.type === 'category') {
                     return (
-                        <div key={`cat-${index}`} className="search-result-item category">
+                        <Link 
+                            to={`/search?q=${encodeURIComponent(result.name)}`} 
+                            key={`cat-${index}`} 
+                            className="search-result-item category"
+                            onClick={onClose}
+                        >
                             <div className={`result-image ${result.image ? '' : 'category-placeholder'}`}>
                                 {result.image ? (
                                     <img src={result.image} alt={result.name} style={{borderRadius: '50%'}} />
@@ -98,7 +103,7 @@ const SearchModal = ({ isOpen, onClose }) => {
                                 <span className="result-title">{result.name}</span>
                                 <span className="result-type">Category</span>
                             </div>
-                        </div>
+                        </Link>
                     );
                 } else {
                     const recipe = result.data;
