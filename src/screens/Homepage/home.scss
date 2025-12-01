@@ -4,7 +4,7 @@
 $hp-grid-gap: 32px;
 $hp-section-margin: 64px;
 $hp-max-width: 1440px;
-$hp-primary-width: 1110px;
+$hp-primary-width: $content-width;
 
 .homepage-container {
 	max-width: $hp-max-width;
@@ -13,16 +13,23 @@ $hp-primary-width: 1110px;
 
 	> * {
 		max-width: $hp-primary-width;
-		width: calc(100% - 30px);
+		width: 100%;
 		margin-left: auto;
 		margin-right: auto;
+
+		@media (max-width: 1150px) {
+			padding-left: 20px;
+			padding-right: 20px;
+		}
 	}
 
 	> .newsletter-banner {
 		max-width: $hp-max-width;
-		width: calc(100% - 60px);
+		width: 100%;
 		margin-left: auto;
 		margin-right: auto;
+		padding-left: 0;
+		padding-right: 0;
 	}
 }
 

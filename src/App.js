@@ -9,6 +9,8 @@ import Home3 from './screens/Homepage/Home3';
 import RecipeDetail from './screens/Recipe/RecipeDetail';
 import Categories from './screens/Categories/Categories';
 import SearchResults from './screens/SearchResults/SearchResults';
+import BlogPage from './screens/Blog/BlogPage';
+import Profile from './screens/Profile/Profile';
 import NotFound from './screens/NotFound/NotFound';
 import { CookieBanner } from './components/Modal';
 
@@ -24,6 +26,8 @@ function App() {
           <Route path="/homepage-3" element={<Home3 />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/search" element={<SearchResults />} />
+          <Route path="/blog-post" element={<BlogPage />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/recipe/:slug" element={<RecipeDetail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

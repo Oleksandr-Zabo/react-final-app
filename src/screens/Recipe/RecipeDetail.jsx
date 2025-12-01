@@ -1,55 +1,85 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getRecipeBySlug } from '../Homepage/recipeData';
-import '../Homepage/home.scss';
+import './RecipeDetail.scss';
+import starIcon from '../../assets/img/icons/star-fill.svg';
+import clockIcon from '../../assets/img/icons/clock.svg';
+import chartIcon from '../../assets/img/icons/bar-chart.svg';
+import Comments from '../../components/Comments/Comments';
 
 const RecipeDetail = () => {
   const { slug } = useParams();
   const recipe = getRecipeBySlug(slug);
+  
   if (!recipe) {
     return (
-      <main className="page-content">
-        <h1>Not Found</h1>
-        <p>No recipe matches slug: {slug}</p>
-        <Link to="/">Go Home</Link>
+      <main className="recipe-detail-page">
+        <div className="recipe-container">
+            <h1>Not Found</h1>
+            <p>No recipe matches slug: {slug}</p>
+            <Link to="/" className="back-link">Go Home</Link>
+        </div>
       </main>
     );
   }
+
   return (
-    <main className="page-content recipe-detail">
-      <div className="recipe-detail__hero">
-        <img src={recipe.images.cover} alt={recipe.title} className="recipe-detail__image" />
-        <div className="recipe-detail__intro">
-          <h1 className="recipe-detail__title">{recipe.title}</h1>
-          <p className="recipe-detail__desc">{recipe.description}</p>
-          <div className="recipe-detail__meta">
-            <span>⭐ {recipe.rating} ({recipe.reviewsCount} reviews)</span>
-            <span>⏱ {recipe.totalTime} total</span>
-            <span>⚙️ {recipe.difficulty}</span>
-          </div>
+    <main className="recipe-detail-page">
+      <div className="recipe-container">
+        <div className="recipe-header">
+            <h1 className="recipe-title">{recipe.title}</h1>
+            <div className="recipe-meta">
+                <span className="rating">
+                    <img src={starIcon} alt="Rating" width="16" /> 
+                    {recipe.rating} ({recipe.reviewsCount} reviews)
+                </span>
+                <span>
+                    <img src={clockIcon} alt="Time" width="16" /> 
+                    {recipe.totalTime}
+                </span>
+                <span>
+                    <img src={chartIcon} alt="Difficulty" width="16" /> 
+                    {recipe.difficulty}
+                </span>
+            </div>
+            <p className="recipe-desc">{recipe.description}</p>
         </div>
-      </div>
-      <section className="recipe-detail__body">
-        <h2>Ingredients</h2>
-        {recipe.ingredients.map((group, idx) => (
-          <div key={group.group || idx} className="recipe-detail__group">
-            <h3>{group.group}</h3>
-            <ul>
-              {group.items.map((item, i) => (
-                <li key={item.id || i}>{item.qty}{item.unit} {item.name}</li>
-              ))}
-            </ul>
-          </div>
-        ))}
-        <h2>Steps</h2>
-        <ol className="recipe-detail__steps">
-          {recipe.steps.map((s,i)=>(
-            <li key={i}>{s.text}</li>
-          ))}
-        </ol>
-      </section>
-      <div className="recipe-detail__back">
-        <Link to="/">← Back to Home</Link>
+
+        <img src={recipe.images.cover} alt={recipe.title} className="recipe-hero-image" />
+
+        <div className="recipe-content">
+            <div className="ingredients-section">
+                <h2>Ingredients</h2>
+                {recipe.ingredients.map((group, idx) => (
+                <div key={group.group || idx} className="ingredient-group">
+                    {group.group && <h3>{group.group}</h3>}
+                    <ul>
+                    {group.items.map((item, i) => (
+                        <li key={item.id || i}>
+                            {item.qty && `${item.qty} `}{item.unit && `${item.unit} `}{item.name}
+                        </li>
+                    ))}
+                    </ul>
+                </div>
+                ))}
+            </div>
+
+            <div className="instructions-section">
+                <h2>Instructions</h2>
+                <ul className="steps-list">
+                {recipe.steps.map((s, i) => (
+                    <li key={i}>
+                        <div className="step-number">{i + 1}</div>
+                        <div className="step-text">{s.text}</div>
+                    </li>
+                ))}
+                </ul>
+            </div>
+
+            <Comments />
+        </div>
+
+        <Link to="/" className="back-link">← Back to Home</Link>
       </div>
     </main>
   );

@@ -1,9 +1,14 @@
 @import '../../assets/data/basics.scss';
 
 .categories-page {
-  max-width: $desktop-container;
+  max-width: $content-width;
   margin: 0 auto;
-  padding: 40px 15px 100px;
+  padding: 40px 0 100px;
+
+  @media (max-width: 1150px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 .page-title {

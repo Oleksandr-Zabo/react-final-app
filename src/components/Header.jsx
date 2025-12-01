@@ -60,6 +60,7 @@ const Header = () => {
             Pages <span className="arrow">▾</span>
           </span>
           <div className="dropdown-menu">
+            <NavLink to="/blog-post" onClick={closeMenu}>Blog Post</NavLink>
             <NavLink to="/about" onClick={closeMenu}>About Us</NavLink>
             <NavLink to="/contact" onClick={closeMenu}>Contact</NavLink>
             <NavLink to="/404" onClick={closeMenu}>404 Page</NavLink>
@@ -73,9 +74,9 @@ const Header = () => {
         <button className="search-btn" onClick={toggleSearch}>
           <img src={searchIcon} alt="Search" />
         </button>
-        <div className="user-avatar">
+        <Link to="/profile" className="user-avatar">
           <img src={avatar} alt="User" />
-        </div>
+        </Link>
         <button className="menu-toggle" onClick={toggleMenu}>
           <img src={isMenuOpen ? closeIcon : menuIcon} alt="Menu" />
         </button>
