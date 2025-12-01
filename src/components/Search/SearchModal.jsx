@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './SearchModal.scss';
 import { getAllRecipes } from '../../screens/Homepage/recipeData';
@@ -7,7 +7,7 @@ import closeIcon from '../../assets/img/icons/x.svg';
 const SearchModal = ({ isOpen, onClose }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [results, setResults] = useState([]);
-  const allRecipes = getAllRecipes();
+  const allRecipes = useMemo(() => getAllRecipes(), []);
   const navigate = useNavigate();
 
   useEffect(() => {
