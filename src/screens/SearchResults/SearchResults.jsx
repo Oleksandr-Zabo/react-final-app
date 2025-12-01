@@ -20,7 +20,7 @@ const SearchResults = () => {
 
   useEffect(() => {
     if (!searchTerm.trim()) {
-      setResults(allRecipes); // Or empty if we prefer
+      setResults(allRecipes);
       return;
     }
 
