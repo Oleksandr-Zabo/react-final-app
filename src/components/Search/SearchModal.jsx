@@ -20,8 +20,10 @@ const SearchModal = ({ isOpen, onClose }) => {
 
   // Handle Escape key to close modal
   useEffect(() => {
+    if (!isOpen) return;
+
     const handleEscapeKey = (e) => {
-      if (e.key === 'Escape' && isOpen) {
+      if (e.key === 'Escape') {
         onClose();
       }
     };
@@ -89,7 +91,7 @@ const SearchModal = ({ isOpen, onClose }) => {
       className={`search-panel ${isOpen ? 'open' : ''}`} 
       onClick={e => e.stopPropagation()}
       role="dialog"
-      aria-modal={isOpen ? "true" : undefined}
+      aria-modal={isOpen ? "true" : "false"}
       aria-label="Search recipes"
     >
       <div className="search-header">
