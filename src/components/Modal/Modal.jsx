@@ -6,8 +6,21 @@ import closeIcon from '../../assets/img/icons/x.svg';
 // Module-level counter for open modals
 let openModalCount = 0;
 
-const FOCUSABLE_ELEMENTS_SELECTOR = 
-  'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+const FOCUSABLE_ELEMENTS_SELECTOR = [
+  'a[href]',
+  'area[href]',
+  'button:not([disabled])',
+  'input:not([disabled])',
+  'select:not([disabled])',
+  'textarea:not([disabled])',
+  'iframe',
+  'object',
+  'embed',
+  '[contenteditable]',
+  'audio[controls]',
+  'video[controls]',
+  '[tabindex]:not([tabindex="-1"])'
+].join(', ');
 
 const Modal = ({ isOpen, onClose, children, title, showCloseBtn = true }) => {
   const modalRef = useRef(null);
@@ -23,6 +36,13 @@ const Modal = ({ isOpen, onClose, children, title, showCloseBtn = true }) => {
     // Focus trap: handle Tab key
     if (e.key === 'Tab' && modalRef.current) {
       const focusableElements = modalRef.current.querySelectorAll(FOCUSABLE_ELEMENTS_SELECTOR);
+      
+      // Exit early if no focusable elements
+      if (focusableElements.length === 0) {
+        e.preventDefault();
+        return;
+      }
+      
       const firstFocusable = focusableElements[0];
       const lastFocusable = focusableElements[focusableElements.length - 1];
 
