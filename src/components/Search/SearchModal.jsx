@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './SearchModal.scss';
 import { getAllRecipes } from '../../screens/Homepage/recipeData';
@@ -9,6 +9,14 @@ const SearchModal = ({ isOpen, onClose }) => {
   const [results, setResults] = useState([]);
   const allRecipes = getAllRecipes();
   const navigate = useNavigate();
+  const inputRef = useRef(null);
+
+  // Focus input when panel opens
+  useEffect(() => {
+    if (isOpen && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [isOpen]);
 
   useEffect(() => {
     if (searchTerm.trim() === '') {
@@ -71,7 +79,7 @@ const SearchModal = ({ isOpen, onClose }) => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           onKeyDown={handleKeyDown}
-          // autoFocus // autoFocus might not work if initially hidden, need to handle focus when opened
+          ref={inputRef}
         />
         <button className="close-btn" onClick={onClose}>
           <img src={closeIcon} alt="Close" />
