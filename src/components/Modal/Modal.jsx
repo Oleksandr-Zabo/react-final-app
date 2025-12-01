@@ -3,15 +3,24 @@ import ReactDOM from 'react-dom';
 import './Modal.scss';
 import closeIcon from '../../assets/img/icons/x.svg';
 
+// Module-level counter for open modals
+let openModalCount = 0;
+
 const Modal = ({ isOpen, onClose, children, title, showCloseBtn = true }) => {
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
+      openModalCount += 1;
+      if (openModalCount === 1) {
+        document.body.style.overflow = 'hidden';
+      }
     }
     return () => {
-      document.body.style.overflow = 'unset';
+      if (isOpen) {
+        openModalCount = Math.max(0, openModalCount - 1);
+        if (openModalCount === 0) {
+          document.body.style.overflow = 'unset';
+        }
+      }
     };
   }, [isOpen]);
 
