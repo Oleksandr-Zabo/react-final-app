@@ -278,6 +278,7 @@
   button {
     min-width: 100px;
     white-space: nowrap;
+    width: auto; // Override .modal-btn width: 100%
   }
   
   @media (max-width: 600px) {

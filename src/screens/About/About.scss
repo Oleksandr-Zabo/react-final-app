@@ -1,0 +1,181 @@
+@import '../../assets/data/basics.scss';
+
+.about-page {
+  padding-top: 40px;
+  padding-bottom: 80px;
+
+  .page-title {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 40px;
+  }
+
+  .intro-section {
+    margin-bottom: 80px;
+
+    .headline {
+      font-size: 56px;
+      font-weight: 700;
+      margin-bottom: 40px;
+      max-width: 800px;
+      line-height: 1.2;
+    }
+
+    .intro-image {
+      width: 100%;
+      height: 500px;
+      overflow: hidden;
+      border-radius: 0;
+      margin-bottom: 40px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .intro-text {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #333;
+      max-width: 800px;
+    }
+  }
+
+  .simple-recipes-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 100px;
+    gap: 60px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+
+    .content {
+      flex: 1;
+
+      h2 {
+        font-size: 48px;
+        font-weight: 700;
+        margin-bottom: 24px;
+        line-height: 1.2;
+      }
+
+      p {
+        font-size: 18px;
+        line-height: 1.6;
+        color: #333;
+      }
+    }
+
+    .image {
+      flex: 1;
+      height: 400px;
+      background-color: #e0f2f1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .team-section {
+    margin-bottom: 100px;
+
+    h2 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 60px;
+      line-height: 1.2;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+
+      @media (max-width: 1024px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      @media (max-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media (max-width: 480px) {
+        grid-template-columns: 1fr;
+      }
+
+      .team-member {
+        text-align: center;
+
+        .avatar {
+          width: 150px;
+          height: 150px;
+          border-radius: 50%;
+          overflow: hidden;
+          margin: 0 auto 20px;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        h3 {
+          font-size: 18px;
+          font-weight: 700;
+          margin-bottom: 8px;
+        }
+
+        p {
+          font-size: 14px;
+          color: #666;
+        }
+      }
+    }
+  }
+
+  .operating-section {
+    .operating-content {
+      max-width: 600px;
+
+      h3 {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+
+      p {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #666;
+        margin-bottom: 24px;
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 20px;
+
+        a {
+          display: inline-block;
+          width: 24px;
+          height: 24px;
+
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+}
