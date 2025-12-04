@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './BlogPage.scss';
 import avatar from '../../assets/img/avatars/avatar.jpg';
@@ -8,7 +8,6 @@ import playIcon from '../../assets/img/icons/play-circle.svg';
 import facebookIcon from '../../assets/img/icons/facebook.svg';
 import twitterIcon from '../../assets/img/icons/twitter.svg';
 import instagramIcon from '../../assets/img/icons/instagram.svg';
-import youtubeIcon from '../../assets/img/icons/youtube.svg';
 import Comments from '../../components/Comments/Comments';
 
 // Import images for the post content (using placeholders or existing recipe images for now)
@@ -16,10 +15,10 @@ import heroImage from '../../assets/img/recipes/cheesecake-large.jpg'; // Placeh
 import kneadingImage from '../../assets/img/recipes/breakfast-burger.jpg'; // Placeholder
 import platingImage from '../../assets/img/recipes/roast-chicken.jpg'; // Placeholder
 
-import { getTopRecipes } from '../Homepage/recipeData';
+import { getYouMightAlsoLike } from '../Homepage/recipeData';
 
 const BlogPage = () => {
-  const relatedRecipes = getTopRecipes(4);
+  const relatedRecipes = getYouMightAlsoLike();
 
   return (
     <div className="blog-page">
@@ -118,9 +117,9 @@ const BlogPage = () => {
                         There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are from repetition, injected humour, or non-characteristic words etc.
                     </p>
                     <div className="social-links">
-                        <a href="#"><img src={facebookIcon} alt="FB" /></a>
-                        <a href="#"><img src={twitterIcon} alt="TW" /></a>
-                        <a href="#"><img src={instagramIcon} alt="IG" /></a>
+                        <button className="social-btn"><img src={facebookIcon} alt="FB" /></button>
+                        <button className="social-btn"><img src={twitterIcon} alt="TW" /></button>
+                        <button className="social-btn"><img src={instagramIcon} alt="IG" /></button>
                     </div>
                 </div>
             </div>

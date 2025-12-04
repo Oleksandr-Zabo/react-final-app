@@ -99,6 +99,10 @@
         display: block;
       }
     }
+
+    .mobile-menu-footer {
+      display: none;
+    }
   }
 
   .header-actions {
@@ -151,17 +155,19 @@
 
   @media (max-width: 800px) {
     .nav-links {
-      position: absolute;
-      top: 100%;
+      position: fixed;
+      top: 80px; // Adjust based on header height
       left: 0;
       right: 0;
+      bottom: 0;
       background: #fff;
       flex-direction: column;
       padding: 20px;
-      gap: 20px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      gap: 0; // Reset gap, handle with padding/margin
+      box-shadow: none;
       display: none;
       z-index: 1000;
+      overflow-y: auto;
 
       &.open {
         display: flex;
@@ -169,10 +175,12 @@
 
       a {
         font-size: 18px;
-        padding: 10px 0;
-        border-bottom: 1px solid $color-gray-100;
+        padding: 15px 0;
+        border-bottom: none;
         width: 100%;
-        justify-content: space-between;
+        justify-content: flex-start;
+        color: $color-black;
+        font-weight: 500;
       }
 
       .nav-item-dropdown {
@@ -180,12 +188,13 @@
         
         .nav-link-label {
           font-size: 18px;
-          padding: 10px 0;
-          border-bottom: 1px solid $color-gray-100;
+          padding: 15px 0;
+          border-bottom: none;
           width: 100%;
           justify-content: space-between;
           cursor: pointer;
           transition: color 0.2s ease;
+          color: $color-black;
 
           .arrow {
             font-size: 12px;
@@ -198,13 +207,13 @@
           display: none;
           box-shadow: none;
           padding: 0 0 0 20px;
-          border-bottom: 1px solid $color-gray-100;
+          border-bottom: none;
           
           a {
             padding: 10px 0;
             border-bottom: none;
             font-size: 16px;
-            color: $color-black;
+            color: $color-gray;
 
             &.active {
               color: $color-primary;
@@ -214,8 +223,7 @@
 
         &.expanded {
           .nav-link-label {
-            color: $color-primary;
-            border-bottom: none; // Remove border so it flows into the list
+            color: $color-black; // Keep black as per design usually
             
             .arrow {
               transform: rotate(180deg);
@@ -224,6 +232,56 @@
 
           .dropdown-menu {
             display: block;
+          }
+        }
+      }
+
+      .mobile-menu-footer {
+        display: flex;
+        flex-direction: column; // Or row depending on design, design shows login left, icons right? No, login is full width or left, icons right.
+        // Actually design shows Login button on left, social icons on right on the same line?
+        // Or Login button above, social icons below?
+        // Looking at the image: Login button is on the left. Social icons are on the right. They seem to be on the same row or close.
+        // Let's make them separate for now.
+        margin-top: auto;
+        padding-top: 40px;
+        border-top: 1px solid $color-gray-100;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        .login-btn {
+          padding: 10px 30px;
+          background: transparent;
+          border: 1px solid $color-black;
+          border-radius: 4px;
+          font-size: 16px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.2s;
+
+          &:hover {
+            background: $color-black;
+            color: #fff;
+          }
+        }
+
+        .social-icons {
+          display: flex;
+          gap: 20px;
+
+          a {
+            padding: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img {
+              width: 100%;
+              height: 100%;
+            }
           }
         }
       }

@@ -91,3 +91,21 @@ export const getCollections = () => [
 ];
 export const getLatestRecipes = (count = 18) => recipes.slice(2, 2 + count);
 export const getRecipeBySlug = (slug) => recipes.find(r => r.slug === slug);
+export const getRecipesByCategory = (categoryId) => {
+  return recipes.filter(r => {
+    if (!r.tags) return false;
+    return r.tags.includes(categoryId) || r.tags.includes(categoryId.toLowerCase());
+  });
+};
+export const getCategoryById = (id) => getAllCategories().find(c => c.id === id);
+
+export const getYouMightAlsoLike = () => {
+  const targetIds = [
+    'perfect-fancy-glazed-donuts',
+    'mighty-cheesy-breakfast-burger',
+    'creamy-tomato-soup',
+    'classic-guacamole'
+  ];
+  // Return them in the specific order
+  return targetIds.map(id => recipes.find(r => r.id === id)).filter(Boolean);
+};

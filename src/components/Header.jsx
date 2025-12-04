@@ -1,16 +1,41 @@
-import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import './Header.scss';
 import searchIcon from '../assets/img/icons/search.svg';
-import avatar from '../assets/img/avatars/avatar.jpg';
+import userIcon from '../assets/img/icons/user.svg';
 import menuIcon from '../assets/img/icons/menu.svg';
 import closeIcon from '../assets/img/icons/x.svg';
+import facebook from '../assets/img/icons/facebook.svg';
+import twitter from '../assets/img/icons/twitter.svg';
+import instagram from '../assets/img/icons/instagram.svg';
 import SearchModal from './Search/SearchModal';
+import { AuthModal } from './Modal';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [expandedMenu, setExpandedMenu] = useState(null);
+  const [avatar, setAvatar] = useState(userIcon);
+  const location = useLocation();
+
+  useEffect(() => {
+    const loadProfile = () => {
+      const savedProfile = localStorage.getItem('userProfile');
+      if (savedProfile) {
+        const parsed = JSON.parse(savedProfile);
+        if (parsed.avatar) {
+          setAvatar(parsed.avatar);
+        }
+      } else {
+        setAvatar(userIcon);
+      }
+    };
+
+    loadProfile();
+    window.addEventListener('userProfileUpdate', loadProfile);
+    return () => window.removeEventListener('userProfileUpdate', loadProfile);
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -27,6 +52,19 @@ const Header = () => {
 
   const toggleSubmenu = (menu) => {
     setExpandedMenu(expandedMenu === menu ? null : menu);
+  };
+
+  const handleUserClick = (e) => {
+    const savedProfile = localStorage.getItem('userProfile');
+    if (!savedProfile) {
+      e.preventDefault();
+      setIsAuthModalOpen(true);
+    }
+  };
+
+  const openLogin = () => {
+    closeMenu();
+    setIsAuthModalOpen(true);
   };
 
   return (
@@ -50,31 +88,30 @@ const Header = () => {
             Recipe Page <span className="arrow">▾</span>
           </span>
           <div className="dropdown-menu">
-            <NavLink to="/categories" onClick={closeMenu}>All Categories</NavLink>
-            <NavLink to="/recipe/strawberry-cream-cheesecake" onClick={closeMenu}>Featured Recipe</NavLink>
+            <NavLink to="/categories" onClick={closeMenu}>Categories</NavLink>
+            <NavLink to="/favorites" onClick={closeMenu}>Favorites</NavLink>
           </div>
         </div>
 
-        <div className={`nav-item-dropdown ${expandedMenu === 'pages' ? 'expanded' : ''}`}>
-          <span className="nav-link-label" onClick={() => toggleSubmenu('pages')}>
-            Pages <span className="arrow">▾</span>
-          </span>
-          <div className="dropdown-menu">
-            <NavLink to="/blog-post" onClick={closeMenu}>Blog Post</NavLink>
-            <NavLink to="/about" onClick={closeMenu}>About Us</NavLink>
-            <NavLink to="/contact" onClick={closeMenu}>Contact</NavLink>
-            <NavLink to="/404" onClick={closeMenu}>404 Page</NavLink>
+        <NavLink to="/blog-post" onClick={closeMenu}>Blog Page</NavLink>
+        <NavLink to="/about" onClick={closeMenu}>About</NavLink>
+        <NavLink to="/profile" onClick={closeMenu}>Profile</NavLink>
+
+        <div className="mobile-menu-footer">
+          <button className="login-btn" onClick={openLogin}>Login</button>
+          <div className="social-icons">
+            <a href="#"><img src={facebook} alt="Facebook" /></a>
+            <a href="#"><img src={twitter} alt="Twitter" /></a>
+            <a href="#"><img src={instagram} alt="Instagram" /></a>
           </div>
         </div>
-
-        <NavLink to="/buy" onClick={closeMenu}>Buy</NavLink>
       </nav>
 
       <div className="header-actions">
         <button className="search-btn" onClick={toggleSearch}>
           <img src={searchIcon} alt="Search" />
         </button>
-        <Link to="/profile" className="user-avatar">
+        <Link to="/profile" className="user-avatar" onClick={handleUserClick}>
           <img src={avatar} alt="User" />
         </Link>
         <button className="menu-toggle" onClick={toggleMenu}>
@@ -82,6 +119,7 @@ const Header = () => {
         </button>
       </div>
       <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+      <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
     </header>
   );
 };

@@ -9,21 +9,23 @@ import lockIcon from '../../assets/img/icons/lock.svg';
 import logOutIcon from '../../assets/img/icons/log-out.svg';
 import facebookIcon from '../../assets/img/icons/facebook.svg';
 import googleIcon from '../../assets/img/icons/chrome.svg';
+import { ConfirmationModal } from '../../components/Modal';
 
 const Profile = () => {
   const fileInputRef = useRef(null);
   const passwordInputRef = useRef(null);
   
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [profile, setProfile] = useState({
-    fullName: 'Suzan Miller',
-    username: 'Miller',
-    email: 'suzan@gmail.com',
-    password: 'password123',
-    avatar: defaultAvatar,
-    newsletter: true,
+    fullName: 'Guest',
+    username: 'guest',
+    email: '',
+    password: '',
+    avatar: userIcon,
+    newsletter: false,
     connectedAccounts: {
-      facebook: true,
-      google: true
+      facebook: false,
+      google: false
     }
   });
 
@@ -45,23 +47,27 @@ const Profile = () => {
 
   const handleSave = () => {
     localStorage.setItem('userProfile', JSON.stringify(profile));
+    window.dispatchEvent(new Event('userProfileUpdate'));
     alert('Profile saved successfully!');
   };
 
-  const handleDeleteAccount = () => {
-    if (window.confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
-        localStorage.removeItem('userProfile');
-        alert('Account deleted (simulated)');
-        setProfile({
-            fullName: '',
-            username: '',
-            email: '',
-            password: '',
-            avatar: defaultAvatar,
-            newsletter: false,
-            connectedAccounts: { facebook: false, google: false }
-        });
-    }
+  const handleDeleteClick = () => {
+      setIsDeleteModalOpen(true);
+  };
+
+  const handleConfirmDelete = () => {
+    localStorage.removeItem('userProfile');
+    window.dispatchEvent(new Event('userProfileUpdate'));
+    setProfile({
+        fullName: 'Guest',
+        username: 'guest',
+        email: '',
+        password: '',
+        avatar: userIcon,
+        newsletter: false,
+        connectedAccounts: { facebook: false, google: false }
+    });
+    setIsDeleteModalOpen(false);
   };
 
   // Avatar Logic
@@ -81,7 +87,7 @@ const Profile = () => {
   };
 
   const handleDeleteAvatar = () => {
-    setProfile(prev => ({ ...prev, avatar: defaultAvatar }));
+    setProfile(prev => ({ ...prev, avatar: userIcon }));
   };
 
   // Connected Accounts Logic
@@ -109,6 +115,14 @@ const Profile = () => {
           if(passwordInputRef.current) passwordInputRef.current.type = "password";
       }, 1000);
     }
+  };
+
+  const handleSignOut = (e) => {
+      e.preventDefault();
+      localStorage.removeItem('userProfile');
+      window.dispatchEvent(new Event('userProfileUpdate'));
+      // Redirect to home or refresh state
+      window.location.href = '/';
   };
 
   return (
@@ -253,16 +267,26 @@ const Profile = () => {
           </div>
 
           <div className="profile-footer">
-            <Link to="/" className="sign-out-link">
+            <a href="/" className="sign-out-link" onClick={handleSignOut}>
               <img src={logOutIcon} alt="" />
               Sign out
-            </Link>
-            <button className="delete-account-btn" onClick={handleDeleteAccount}>
+            </a>
+            <button className="delete-account-btn" onClick={handleDeleteClick}>
               Delete Account
             </button>
           </div>
         </div>
       </div>
+      <ConfirmationModal 
+        isOpen={isDeleteModalOpen} 
+        onClose={() => setIsDeleteModalOpen(false)}
+        onConfirm={handleConfirmDelete}
+        title="Are you sure you want to delete your account?"
+        message="Are you sure you want to delete your account? This action cannot be undone."
+        confirmText="Delete"
+        cancelText="Cancel"
+        isDanger={true}
+      />
     </div>
   );
 };
