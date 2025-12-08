@@ -6,18 +6,18 @@ import instagram from '../../assets/img/icons/instagram.svg';
 
 import introImage from '../../assets/img/about-page/Intro.png';
 import contentExample from '../../assets/img/about-page/ContentExample.png';
-import member1 from '../../assets/img/about-page/Image.png';
-import member2 from '../../assets/img/about-page/Image-1.png';
-import member3 from '../../assets/img/about-page/Image-2.png';
-import member4 from '../../assets/img/about-page/Image-3.png';
-import member5 from '../../assets/img/about-page/Image-4.png';
-import member6 from '../../assets/img/about-page/Image-5.png';
-import member7 from '../../assets/img/about-page/Image-6.png';
-import member8 from '../../assets/img/about-page/Image-7.png';
-import member9 from '../../assets/img/about-page/Image-8.png';
-import member10 from '../../assets/img/about-page/Image-9.png';
-import member11 from '../../assets/img/about-page/Image-10.png';
-import member12 from '../../assets/img/about-page/Image-11.png';
+import member1 from '../../assets/img/about-page/HamChuwon.png';
+import member2 from '../../assets/img/about-page/IzabellaTabakova.png';
+import member3 from '../../assets/img/about-page/FatimaDelgadillo.png';
+import member4 from '../../assets/img/about-page/HarrisonPhillips.png';
+import member5 from '../../assets/img/about-page/PabloCambeiro.png';
+import member6 from '../../assets/img/about-page/CorabelleDurrad.png';
+import member7 from '../../assets/img/about-page/NonkosiJoyi.png';
+import member8 from '../../assets/img/about-page/WenYahui.png';
+import member9 from '../../assets/img/about-page/JurrienOldhof.png';
+import member10 from '../../assets/img/about-page/TallahCotton.png';
+import member11 from '../../assets/img/about-page/QinShi.png';
+import member12 from '../../assets/img/about-page/SuHua.png';
 
 const About = () => {
   const teamMembers = [
@@ -84,9 +84,9 @@ const About = () => {
               Gastronomy atmosphere set aside. Slice butternut cooking home. Delicious romantic undisturbed raw platter will mald. Thick Skewers skillet natural, smoker soy sauce wait roux. slices rosetta bone-in simmer precision alongside baby leeks. Crafting renders aromatic enjoyment.
             </p>
             <div className="social-icons">
-              <a href="#"><img src={facebook} alt="Facebook" /></a>
-              <a href="#"><img src={twitter} alt="Twitter" /></a>
-              <a href="#"><img src={instagram} alt="Instagram" /></a>
+              <button type="button" onClick={() => {}}><img src={facebook} alt="Facebook" /></button>
+              <button type="button" onClick={() => {}}><img src={twitter} alt="Twitter" /></button>
+              <button type="button" onClick={() => {}}><img src={instagram} alt="Instagram" /></button>
             </div>
           </div>
         </section>

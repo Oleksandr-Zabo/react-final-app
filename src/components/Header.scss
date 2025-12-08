@@ -24,9 +24,7 @@
     font-weight: bold;
     color: $color-black;
     text-decoration: none;
-    
-    // If there is an image logo, we would use it here. 
-    // For now, text "Tastebite" as per design.
+
   }
 
   .nav-links {
@@ -238,11 +236,7 @@
 
       .mobile-menu-footer {
         display: flex;
-        flex-direction: column; // Or row depending on design, design shows login left, icons right? No, login is full width or left, icons right.
-        // Actually design shows Login button on left, social icons on right on the same line?
-        // Or Login button above, social icons below?
-        // Looking at the image: Login button is on the left. Social icons are on the right. They seem to be on the same row or close.
-        // Let's make them separate for now.
+        flex-direction: column; 
         margin-top: auto;
         padding-top: 40px;
         border-top: 1px solid $color-gray-100;
@@ -270,7 +264,10 @@
           display: flex;
           gap: 20px;
 
-          a {
+          button {
+            background: none;
+            border: none;
+            cursor: pointer;
             padding: 0;
             width: 24px;
             height: 24px;

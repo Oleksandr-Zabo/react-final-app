@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { useAuthModal } from '../../context/AuthModalContext';
 import { getCategoryById, getRecipesByCategory } from '../Homepage/recipeData';
 import './CategoryDetail.scss';
 import heartIcon from '../../assets/img/icons/heart.svg';
@@ -7,11 +8,22 @@ import heartFillIcon from '../../assets/img/icons/heart fill.svg';
 
 const CategoryDetail = () => {
   const { id } = useParams();
+  const { openAuthModal } = useAuthModal();
   const [category, setCategory] = useState(null);
   const [recipes, setRecipes] = useState([]);
   const [visibleCount, setVisibleCount] = useState(12);
   const [sortOption, setSortOption] = useState('newest');
   const [likedRecipes, setLikedRecipes] = useState({});
+
+  useEffect(() => {
+    const savedFavorites = localStorage.getItem('userFavorites');
+    if (savedFavorites) {
+      const parsedIds = JSON.parse(savedFavorites);
+      const initialLiked = {};
+      parsedIds.forEach(id => { initialLiked[id] = true; });
+      setLikedRecipes(initialLiked);
+    }
+  }, []);
 
   useEffect(() => {
     const cat = getCategoryById(id);
@@ -44,10 +56,30 @@ const CategoryDetail = () => {
 
   const toggleLike = (e, recipeId) => {
     e.preventDefault();
-    setLikedRecipes(prev => ({
-        ...prev,
-        [recipeId]: !prev[recipeId]
-    }));
+    e.stopPropagation();
+
+    const userProfile = localStorage.getItem('userProfile');
+    if (!userProfile) {
+      openAuthModal();
+      return;
+    }
+
+    setLikedRecipes(prev => {
+      const newState = { ...prev, [recipeId]: !prev[recipeId] };
+      
+      // Update localStorage
+      const currentFavorites = JSON.parse(localStorage.getItem('userFavorites') || '[]');
+      let newFavorites;
+      if (newState[recipeId]) {
+        if (!currentFavorites.includes(recipeId)) newFavorites = [...currentFavorites, recipeId];
+        else newFavorites = currentFavorites;
+      } else {
+        newFavorites = currentFavorites.filter(favId => favId !== recipeId);
+      }
+      localStorage.setItem('userFavorites', JSON.stringify(newFavorites));
+      
+      return newState;
+    });
   };
 
   if (!category) {

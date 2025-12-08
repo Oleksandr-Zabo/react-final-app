@@ -29,7 +29,7 @@
             margin-bottom: 16px;
             display: inline-block;
             margin-right: 12px;
-            color: #000;
+            color: $color-black;
 
             @media (max-width: 480px) {
                 font-size: 32px;
@@ -75,7 +75,7 @@
                 cursor: pointer;
                 min-width: auto;
                 font-weight: 600;
-                color: #000;
+                color: $color-black;
 
                 &:focus {
                     outline: none;
@@ -146,10 +146,7 @@
                     align-items: center;
                     justify-content: center;
                     cursor: pointer;
-                    opacity: 0; // Hidden by default or visible? Screenshot shows no hearts on cards, but user asked for "like" functionality on previous page. 
-                    // Wait, screenshot DOES show hearts? No, screenshot doesn't show hearts on the grid cards.
-                    // But user asked "implement this page and based on it implement similar ones" and previously asked for likes.
-                    // I'll make it visible on hover or always visible if liked.
+                    opacity: 0; 
                     transition: all 0.2s;
                     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 
@@ -184,7 +181,7 @@
                 font-weight: 600;
                 line-height: 1.4;
                 margin: 0;
-                color: #000;
+                color: $color-black;
             }
         }
     }
@@ -195,7 +192,7 @@
         .load-more-btn {
             padding: 12px 40px;
             background: white;
-            border: 1px solid #000;
+            border: 1px solid $color-black;
             border-radius: 4px;
             font-weight: 600;
             font-size: 14px;
@@ -203,7 +200,7 @@
             transition: all 0.2s;
 
             &:hover {
-                background: #000;
+                background: $color-black;
                 color: white;
             }
         }

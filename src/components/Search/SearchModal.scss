@@ -1,3 +1,5 @@
+@import '../../assets/data/basics.scss';
+
 .search-panel {
   display: none;
   position: absolute;
@@ -62,7 +64,7 @@
       transition: background-color 0.2s;
 
       &:hover {
-        background-color: #f9f9f9;
+        background-color: $color-gray-200;
       }
 
       .result-image {
@@ -117,12 +119,12 @@
         width: auto;
         padding: 12px 32px;
         background: white;
-        border: 1px solid #000;
+        border: 1px solid $color-black;
         border-radius: 4px;
         font-size: 16px;
         font-weight: 600;
         cursor: pointer;
-        color: #000;
+        color: $color-black;
 
         &:hover {
             background-color: #f5f5f5;

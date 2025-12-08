@@ -6,7 +6,7 @@
     color: #333;
 
     .container {
-        max-width: $content-width; // Main content width
+        max-width: $content-width;
         margin: 0 auto;
         padding: 0;
 
@@ -16,9 +16,7 @@
     }
 
     .blog-header {
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
+        width: 100%;
         text-align: center;
         margin-bottom: 40px;
 
@@ -53,7 +51,7 @@
 
                 .author-name {
                     font-weight: 600;
-                    color: #000;
+                    color: $color-black;
                 }
 
                 .post-date, .comment-count {
@@ -89,9 +87,7 @@
     }
 
     .blog-content {
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
+        width: 100%;
         font-size: 18px;
         line-height: 1.8;
         color: #444;
@@ -105,7 +101,7 @@
             font-size: 32px;
             font-weight: 700;
             margin: 40px 0 20px;
-            color: #000;
+            color: $color-black;
         }
 
         .intro-text {
@@ -122,6 +118,13 @@
             img {
                 width: 100%;
                 display: block;
+            }
+
+            &.full-width {
+                img {
+                    height: 624px;
+                    object-fit: cover;
+                }
             }
 
             &.hero-video {
@@ -182,7 +185,7 @@
             font-size: 36px;
             font-weight: 700;
             line-height: 1.4;
-            color: #000;
+            color: $color-black;
             border: none;
 
             cite {
@@ -197,7 +200,7 @@
         }
 
         .author-box {
-            background-color: #f9f9f9;
+            background-color: $color-gray-200;
             padding: 40px;
             margin-top: 60px;
             border-radius: 8px;
@@ -335,7 +338,7 @@
                             font-weight: 500;
 
                             &:hover {
-                                color: #000;
+                                color: $color-black;
                             }
                         }
                     }
@@ -357,7 +360,7 @@
                 transition: all 0.2s;
 
                 &:hover {
-                    border-color: #000;
+                    border-color: $color-black;
                 }
             }
         }
@@ -380,7 +383,7 @@
                 margin-bottom: 24px;
                 
                 a {
-                    color: #ff642f; // Brand color
+                    color: $color-primary; // Brand color
                     text-decoration: none;
                 }
             }
@@ -396,7 +399,7 @@
                     font-family: inherit;
                     font-size: 16px;
                     margin-bottom: 20px;
-                    background-color: #f9f9f9;
+                    background-color: $color-gray-200;
 
                     &:focus {
                         outline: none;
@@ -409,7 +412,7 @@
                     text-align: right;
 
                     .post-btn {
-                        background-color: #ff642f;
+                        background-color: $color-primary;
                         color: white;
                         border: none;
                         padding: 12px 32px;
@@ -419,7 +422,7 @@
                         transition: background-color 0.2s;
 
                         &:hover {
-                            background-color: darken(#ff642f, 10%);
+                            background-color: darken($color-primary, 10%);
                         }
                     }
                 }

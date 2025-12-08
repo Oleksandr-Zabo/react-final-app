@@ -299,7 +299,7 @@
             .unsubscribe-btn {
                 padding: 10px 24px;
                 background: white;
-                border: 1px solid #000;
+                border: 1px solid $color-black;
                 border-radius: 4px;
                 font-weight: 600;
                 font-size: 14px;
@@ -342,7 +342,7 @@
         .delete-account-btn {
             background: none;
             border: none;
-            color: #ff642f; // Brand orange or red
+            color: $color-primary; // Brand orange or red
             font-weight: 500;
             font-size: 16px;
             cursor: pointer;

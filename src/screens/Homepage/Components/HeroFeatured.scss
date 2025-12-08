@@ -4,8 +4,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr; // Split 50/50 as per design
   gap: 0;
-  border: none; // Remove border
-  border-radius: 0; // Remove border radius if not needed, or keep small
+  border: none; 
+  border-radius: 0; 
   overflow: hidden;
   background: $color-sky; // Use sky blue background
   margin-bottom: 60px; // Add spacing below hero

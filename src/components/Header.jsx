@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import { useAuthModal } from '../context/AuthModalContext';
 import './Header.scss';
 import searchIcon from '../assets/img/icons/search.svg';
 import userIcon from '../assets/img/icons/user.svg';
@@ -9,15 +10,13 @@ import facebook from '../assets/img/icons/facebook.svg';
 import twitter from '../assets/img/icons/twitter.svg';
 import instagram from '../assets/img/icons/instagram.svg';
 import SearchModal from './Search/SearchModal';
-import { AuthModal } from './Modal';
 
 const Header = () => {
+  const { openAuthModal } = useAuthModal();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [expandedMenu, setExpandedMenu] = useState(null);
   const [avatar, setAvatar] = useState(userIcon);
-  const location = useLocation();
 
   useEffect(() => {
     const loadProfile = () => {
@@ -58,13 +57,13 @@ const Header = () => {
     const savedProfile = localStorage.getItem('userProfile');
     if (!savedProfile) {
       e.preventDefault();
-      setIsAuthModalOpen(true);
+      openAuthModal();
     }
   };
 
   const openLogin = () => {
     closeMenu();
-    setIsAuthModalOpen(true);
+    openAuthModal();
   };
 
   return (
@@ -100,9 +99,9 @@ const Header = () => {
         <div className="mobile-menu-footer">
           <button className="login-btn" onClick={openLogin}>Login</button>
           <div className="social-icons">
-            <a href="#"><img src={facebook} alt="Facebook" /></a>
-            <a href="#"><img src={twitter} alt="Twitter" /></a>
-            <a href="#"><img src={instagram} alt="Instagram" /></a>
+            <button type="button"><img src={facebook} alt="Facebook" /></button>
+            <button type="button"><img src={twitter} alt="Twitter" /></button>
+            <button type="button"><img src={instagram} alt="Instagram" /></button>
           </div>
         </div>
       </nav>
@@ -119,7 +118,6 @@ const Header = () => {
         </button>
       </div>
       <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
-      <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
     </header>
   );
 };

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import './Comments.scss';
 import userIcon from '../../assets/img/icons/user.svg';
 import heartIcon from '../../assets/img/icons/heart.svg';
@@ -7,12 +6,13 @@ import heartFillIcon from '../../assets/img/icons/heart fill.svg';
 import replyIcon from '../../assets/img/icons/message-circle.svg'; // Using message-circle as reply icon
 import { AuthModal } from '../Modal';
 
-const CommentItem = ({ comment, currentUser, onLoginReq }) => {
+const CommentItem = ({ comment, currentUser, onLoginReq, onReply }) => {
     const [liked, setLiked] = useState(false);
     const [likesCount, setLikesCount] = useState(comment.likes);
     const [isReplying, setIsReplying] = useState(false);
     const [replyText, setReplyText] = useState('');
-    const [replies, setReplies] = useState(comment.repliesList || []); // Assuming comment object might have repliesList later
+    
+    const replies = comment.repliesList || [];
 
     const handleLike = () => {
         if (!currentUser) {
@@ -46,7 +46,7 @@ const CommentItem = ({ comment, currentUser, onLoginReq }) => {
             text: replyText
         };
 
-        setReplies([...replies, newReply]);
+        onReply(comment.id, newReply);
         setReplyText('');
         setIsReplying(false);
     };
@@ -105,18 +105,24 @@ const CommentItem = ({ comment, currentUser, onLoginReq }) => {
 };
 
 const Comments = () => {
-  const [comments, setComments] = useState([
-    {
-      id: 1,
-      user: 'Sofia',
-      avatar: userIcon,
-      time: '12 min ago',
-      text: 'I really love this recipe. I will definitely try to make it at home. Thanks for sharing!',
-      likes: 12,
-      replies: 2,
-      repliesList: [] // Initial empty list for new replies
-    },
-  ]);
+  const [comments, setComments] = useState(() => {
+      const savedComments = localStorage.getItem('blogComments');
+      if (savedComments) {
+          return JSON.parse(savedComments);
+      }
+      return [
+        {
+          id: 1,
+          user: 'Sofia',
+          avatar: userIcon,
+          time: '12 min ago',
+          text: 'I really love this recipe. I will definitely try to make it at home. Thanks for sharing!',
+          likes: 12,
+          replies: 2,
+          repliesList: [] // Initial empty list for new replies
+        },
+      ];
+  });
 
   const [commentText, setCommentText] = useState('');
   const [currentUser, setCurrentUser] = useState(null);
@@ -137,6 +143,10 @@ const Comments = () => {
     return () => window.removeEventListener('userProfileUpdate', loadProfile);
   }, []);
 
+  useEffect(() => {
+      localStorage.setItem('blogComments', JSON.stringify(comments));
+  }, [comments]);
+
   const handlePostComment = () => {
     if (!commentText.trim()) return;
 
@@ -146,7 +156,7 @@ const Comments = () => {
     }
 
     const newComment = {
-      id: comments.length + 1,
+      id: Date.now(),
       user: currentUser.username || currentUser.fullName || 'Anonymous',
       avatar: currentUser.avatar || userIcon,
       time: 'Just now',
@@ -158,6 +168,19 @@ const Comments = () => {
 
     setComments([newComment, ...comments]);
     setCommentText('');
+  };
+
+  const handleReply = (commentId, newReply) => {
+      setComments(prevComments => prevComments.map(c => {
+          if (c.id === commentId) {
+              return {
+                  ...c,
+                  replies: (c.replies || 0) + 1,
+                  repliesList: [...(c.repliesList || []), newReply]
+              };
+          }
+          return c;
+      }));
   };
 
   const handleLoginClick = (e) => {
@@ -176,6 +199,7 @@ const Comments = () => {
             comment={comment} 
             currentUser={currentUser} 
             onLoginReq={() => setIsAuthModalOpen(true)}
+            onReply={handleReply}
           />
         ))}
       </div>

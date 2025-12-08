@@ -3,9 +3,6 @@ import { Link } from 'react-router-dom';
 import { getAllRecipes } from '../Homepage/recipeData';
 import './Favorites.scss';
 import heartIcon from '../../assets/img/icons/heart fill.svg'; // Orange heart for title
-import trashIcon from '../../assets/img/icons/trash.svg'; // Need to check if exists or use generic
-import editIcon from '../../assets/img/icons/edit.svg'; // Need to check
-import checkCircleIcon from '../../assets/img/icons/check-circle.svg'; // Need to check
 
 const Favorites = () => {
   const [favorites, setFavorites] = useState([]);
@@ -15,10 +12,16 @@ const Favorites = () => {
   const [sortOption, setSortOption] = useState('newest');
 
   useEffect(() => {
-    // For demo purposes, let's load all recipes as "favorites" to match the screenshot's populated look
-    // In a real app, we would read from localStorage or API
-    const allRecipes = getAllRecipes().map((r, index) => ({ ...r, originalIndex: index }));
-    setFavorites(allRecipes);
+    // Load favorites from localStorage
+    const savedFavorites = localStorage.getItem('userFavorites');
+    if (savedFavorites) {
+      const parsedIds = JSON.parse(savedFavorites);
+      const allRecipes = getAllRecipes();
+      const favRecipes = allRecipes.filter(r => parsedIds.includes(r.id)).map((r, index) => ({ ...r, originalIndex: index }));
+      setFavorites(favRecipes);
+    } else {
+      setFavorites([]);
+    }
   }, []);
 
   const toggleSelectionMode = () => {
@@ -88,6 +91,7 @@ const Favorites = () => {
         <div className="favorites-toolbar">
             <span className="recipe-count">({favorites.length} Recipes)</span>
             
+            {favorites.length > 0 && (
             <div className="toolbar-actions">
                 <button className={`action-btn ${isSelectionMode ? 'active' : ''}`} onClick={toggleSelectionMode}>
                     <span className="icon">✎</span> Select
@@ -104,8 +108,17 @@ const Favorites = () => {
                     </>
                 )}
             </div>
+            )}
         </div>
 
+        {favorites.length === 0 ? (
+            <div className="empty-favorites">
+                <div className="empty-icon">💔</div>
+                <h2>No favorites yet</h2>
+                <p>Start exploring and save your favorite recipes here!</p>
+                <Link to="/" className="browse-btn">Browse Recipes</Link>
+            </div>
+        ) : (
         <div className="favorites-grid">
             {visibleRecipes.map(recipe => (
                 <div key={recipe.id} className={`favorite-card-wrapper ${isSelectionMode ? 'selection-mode' : ''}`}>
@@ -123,6 +136,7 @@ const Favorites = () => {
                 </div>
             ))}
         </div>
+        )}
 
         {visibleCount < favorites.length && (
             <div className="load-more-container">
