@@ -10,6 +10,8 @@ import breakfastBurger from '../../assets/img/recipes/breakfast-burger.jpg';
 import donuts from '../../assets/img/recipes/donuts.jpg';
 import tomatoSoup from '../../assets/img/recipes/tomato-soup.jpg';
 import guacamole from '../../assets/img/recipes/guacamole.jpg';
+import sushi from '../../assets/img/recipes/Sushi.png';
+import vegan from '../../assets/img/recipes/Vegan.png';
 import avatar from '../../assets/img/avatars/avatar.jpg';
 
 const imageMap = {
@@ -22,6 +24,8 @@ const imageMap = {
   'assets/img/recipes/donuts.jpg': donuts,
   'assets/img/recipes/tomato-soup.jpg': tomatoSoup,
   'assets/img/recipes/guacamole.jpg': guacamole,
+  'assets/img/recipes/Sushi.png': sushi,
+  'assets/img/recipes/Vegan.png': vegan,
   'assets/img/avatars/avatar.jpg': avatar
 };
 
@@ -52,7 +56,7 @@ export const getSweetTooth = (count = 3) => recipes.slice(4, 4 + count); // arbi
 export const getCategories = () => [
   { id: 'pasta', name: 'Pasta', image: spinachPasta },
   { id: 'pizza', name: 'Pizza', image: roastChicken },
-  { id: 'vegan', name: 'Vegan', image: okraStew },
+  { id: 'vegan', name: 'Vegan', image: vegan },
   { id: 'desserts', name: 'Desserts', image: cheesecakeLarge },
   { id: 'smoothies', name: 'Smoothies', image: bananaSmoothie },
   { id: 'breakfast', name: 'Breakfast', image: breakfastBurger }
@@ -70,7 +74,7 @@ export const getAllCategories = () => [
   { id: 'cake', name: 'Cake', image: cheesecakeLarge },
   { id: 'pastries', name: 'Pastries', image: donuts },
   { id: 'burger', name: 'Burger', image: breakfastBurger },
-  { id: 'vegan', name: 'Vegan', image: guacamole },
+  { id: 'vegan', name: 'Vegan', image: vegan },
   { id: 'desserts', name: 'Desserts', image: cheesecakeLarge },
   { id: 'smoothies', name: 'Smoothies', image: bananaSmoothie },
   { id: 'breakfast', name: 'Breakfast', image: breakfastBurger },
@@ -82,7 +86,7 @@ export const getAllCategories = () => [
 ];
 
 export const getCollections = () => [
-  { id: 'sushi-combos', title: 'Sushi Combos for your Next Party', image: roastChicken, count: 156 },
+  { id: 'sushi-combos', title: 'Sushi Combos for your Next Party', image: sushi, count: 156 },
   { id: 'everything-bagel', title: 'Everything Bagel', image: donuts, count: 156 },
   { id: 'cook-like-a-chef', title: 'Cook Like a Chef', image: cheesecakeLarge, count: 156 },
   { id: 'exquisite-dinner', title: 'Exquisite Dinner Recipe Ideas', image: okraStew, count: 156 },

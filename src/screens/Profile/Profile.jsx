@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import './Profile.scss';
-import defaultAvatar from '../../assets/img/avatars/avatar.jpg';
 import userIcon from '../../assets/img/icons/user.svg';
 import atSignIcon from '../../assets/img/icons/at-sign.svg';
 import mailIcon from '../../assets/img/icons/mail.svg';

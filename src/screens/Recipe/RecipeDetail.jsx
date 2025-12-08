@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { useAuthModal } from '../../context/AuthModalContext';
 import { getRecipeBySlug, getYouMightAlsoLike, getLatestRecipes } from '../Homepage/recipeData';
 import './RecipeDetail.scss';
 import starIcon from '../../assets/img/icons/star-fill.svg';
-import clockIcon from '../../assets/img/icons/clock.svg';
 import chartIcon from '../../assets/img/icons/bar-chart.svg';
 import printerIcon from '../../assets/img/icons/printer.svg';
 import shareIcon from '../../assets/img/icons/share.svg';
@@ -12,16 +12,15 @@ import playIcon from '../../assets/img/icons/play-circle.svg';
 import heartIcon from '../../assets/img/icons/heart.svg';
 import heartFillIcon from '../../assets/img/icons/heart fill.svg';
 import Comments from '../../components/Comments/Comments';
-import { AuthModal } from '../../components/Modal';
 
 const RecipeDetail = () => {
   const { slug } = useParams();
+  const { openAuthModal } = useAuthModal();
   const recipe = getRecipeBySlug(slug);
   const [liked, setLiked] = useState(false);
   const [checkedIngredients, setCheckedIngredients] = useState({});
   const [relatedRecipes, setRelatedRecipes] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
-  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
 
   useEffect(() => {
     const loadProfile = () => {
@@ -58,7 +57,14 @@ const RecipeDetail = () => {
         }
         
         // Reset state on slug change
-        setLiked(false);
+        // Load liked state
+        const savedFavorites = localStorage.getItem('userFavorites');
+        if (savedFavorites) {
+            const parsedIds = JSON.parse(savedFavorites);
+            setLiked(parsedIds.includes(recipe.id));
+        } else {
+            setLiked(false);
+        }
         setCheckedIngredients({});
     }
   }, [slug, recipe]);
@@ -72,10 +78,23 @@ const RecipeDetail = () => {
 
   const toggleLike = () => {
     if (!currentUser) {
-        setIsAuthModalOpen(true);
+        openAuthModal();
         return;
     }
-    setLiked(!liked);
+    
+    const newLikedState = !liked;
+    setLiked(newLikedState);
+    
+    // Update localStorage
+    const currentFavorites = JSON.parse(localStorage.getItem('userFavorites') || '[]');
+    let newFavorites;
+    if (newLikedState) {
+        if (!currentFavorites.includes(recipe.id)) newFavorites = [...currentFavorites, recipe.id];
+        else newFavorites = currentFavorites;
+    } else {
+        newFavorites = currentFavorites.filter(favId => favId !== recipe.id);
+    }
+    localStorage.setItem('userFavorites', JSON.stringify(newFavorites));
   };
   
   if (!recipe) {
@@ -245,7 +264,6 @@ const RecipeDetail = () => {
         </div>
 
       </div>
-      <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
     </main>
   );
 };

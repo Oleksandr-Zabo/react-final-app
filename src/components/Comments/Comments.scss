@@ -1,7 +1,7 @@
 @import '../../assets/data/basics.scss';
 
 .comments-section {
-    max-width: 800px; // Or 100% if controlled by parent, but 800px looks good for readability
+    max-width: 800px; 
     margin: 60px 0;
 
     h2 {
@@ -80,7 +80,7 @@
                         }
 
                         &:hover {
-                            color: #000;
+                            color: $color-black;
                             img {
                                 opacity: 1;
                             }
@@ -93,14 +93,14 @@
                         border-radius: 20px;
                         
                         &:hover, &.active {
-                            border-color: #000;
-                            background: #f9f9f9;
+                            border-color: $color-black;
+                            background: $color-gray-200;
                         }
                     }
 
                     .like-btn {
                         &.liked {
-                            color: #FF642F;
+                            color: $color-primary;
                             img {
                                 opacity: 1;
                             }
@@ -124,12 +124,12 @@
 
                         &:focus {
                             outline: none;
-                            border-color: #000;
+                            border-color: $color-black;
                         }
                     }
 
                     .submit-reply-btn {
-                        background: #000;
+                        background: $color-black;
                         color: white;
                         border: none;
                         padding: 8px 16px;
@@ -191,11 +191,8 @@
     }
 
     .write-comment {
-        background-color: #fcfcfc; // Light background as seen in some designs, or white
-        // The image shows a white box with a border maybe? Or just on the page background.
-        // Let's stick to the BlogPage style which seemed to match.
-        padding: 0; // Reset padding if we want it flush, but BlogPage had padding.
-        // Let's use the BlogPage styles exactly.
+        background-color: #fcfcfc; 
+        padding: 0; 
         
         margin-top: 40px;
 
@@ -213,7 +210,7 @@
             margin-bottom: 24px;
             
             a {
-                color: #ff642f; // Brand color
+                color: $color-primary; // Brand color
                 text-decoration: none;
                 font-weight: 500;
             }
@@ -230,7 +227,7 @@
                 font-family: 'Inter', sans-serif;
                 font-size: 16px;
                 margin-bottom: 20px;
-                background-color: #f9f9f9;
+                background-color: $color-gray-200;
                 color: #333;
 
                 &::placeholder {
@@ -249,7 +246,7 @@
                 text-align: right;
 
                 .post-btn {
-                    background-color: #ff642f;
+                    background-color: $color-primary;
                     color: white;
                     border: none;
                     padding: 12px 32px;
@@ -259,7 +256,7 @@
                     transition: background-color 0.2s;
 
                     &:hover {
-                        background-color: darken(#ff642f, 10%);
+                        background-color: darken($color-primary, 10%);
                     }
                 }
             }

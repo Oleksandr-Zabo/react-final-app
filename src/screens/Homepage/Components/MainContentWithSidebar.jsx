@@ -2,11 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../Homepage/home.scss';
 import './MainContentWithSidebar.scss';
-import avatar from '../../../assets/img/avatars/avatar.jpg'; // Assuming this exists or use from recipe
-import insta1 from '../../../assets/img/recipes/spinach-pasta.jpg'; // Mockup images
-import insta2 from '../../../assets/img/recipes/roast-chicken.jpg';
-import insta3 from '../../../assets/img/recipes/okra-stew.jpg';
-import insta4 from '../../../assets/img/recipes/cheesecake-large.jpg';
+import avatar from '../../../assets/img/avatars/avatarTara.png'; 
+import InstagramWidget from './InstagramWidget';
 
 const MainContentWithSidebar = ({ featured, list, fresh }) => {
   return (
@@ -77,7 +74,7 @@ const MainContentWithSidebar = ({ featured, list, fresh }) => {
             </div>
             <h3>Hi, I'm Tara</h3>
             <p>I'm a former dentist with a big passion for food, now I'm full time food blogger. I love exploring new cooking techniques as well as easy and fun recipes.</p>
-            <Link to="/about" className="btn-outline">Read More</Link>
+            <Link to="/blog-post" className="btn-outline">Read More</Link>
           </div>
 
           {/* Fresh Recipes Widget */}
@@ -99,21 +96,7 @@ const MainContentWithSidebar = ({ featured, list, fresh }) => {
             </div>
           </div>
 
-          {/* Instagram Widget */}
-          <div className="sidebar-widget instagram-widget">
-            <div className="insta-header">
-              <h3>Instagram</h3>
-              <button className="btn-follow">Follow</button>
-            </div>
-            <div className="insta-grid">
-              <img src={insta1} alt="Instagram 1" />
-              <img src={insta2} alt="Instagram 2" />
-              <img src={insta3} alt="Instagram 3" />
-              <img src={insta4} alt="Instagram 4" />
-              <img src={insta1} alt="Instagram 5" />
-              <img src={insta2} alt="Instagram 6" />
-            </div>
-          </div>
+          <InstagramWidget />
         </aside>
       </div>
     </section>

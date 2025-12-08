@@ -13,6 +13,7 @@
   width: 120px;
   cursor: pointer;
   transition: transform 0.2s ease;
+  text-decoration: none; // Ensure no underline for Link
 
   &:hover {
     transform: translateY(-5px);

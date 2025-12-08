@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './BlogPage.scss';
-import avatar from '../../assets/img/avatars/avatar.jpg';
+import avatar from '../../assets/img/avatars/avatarTricia.jpg';
 import shareIcon from '../../assets/img/icons/share-2.svg';
 import bookmarkIcon from '../../assets/img/icons/bookmark.svg';
 import playIcon from '../../assets/img/icons/play-circle.svg';
@@ -10,10 +10,10 @@ import twitterIcon from '../../assets/img/icons/twitter.svg';
 import instagramIcon from '../../assets/img/icons/instagram.svg';
 import Comments from '../../components/Comments/Comments';
 
-// Import images for the post content (using placeholders or existing recipe images for now)
-import heroImage from '../../assets/img/recipes/cheesecake-large.jpg'; // Placeholder
-import kneadingImage from '../../assets/img/recipes/breakfast-burger.jpg'; // Placeholder
-import platingImage from '../../assets/img/recipes/roast-chicken.jpg'; // Placeholder
+// Import images for the post content
+import heroImage from '../../assets/img/blog/1.png';
+import kneadingImage from '../../assets/img/blog/2.png';
+import platingImage from '../../assets/img/blog/3.png';
 
 import { getYouMightAlsoLike } from '../Homepage/recipeData';
 

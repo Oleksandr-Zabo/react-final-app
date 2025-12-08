@@ -12,14 +12,14 @@
 
 .collection-card {
   background: #fff;
-  border: none; // Remove border
+  border: none; 
   border-radius: 8px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   text-decoration: none;
   color: inherit;
-  box-shadow: $soft-shadow; // Add shadow
+  box-shadow: $soft-shadow; 
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 
   &:hover {
@@ -49,8 +49,8 @@
 .collection-card__body {
   padding: 24px;
   display: flex;
-  flex-direction: row; // Change to row
-  align-items: center; // Center vertically
+  flex-direction: row; 
+  align-items: center; 
   justify-content: space-between; // Space between title and pill
   gap: 16px;
 }
@@ -68,8 +68,7 @@
 .pill {
   display: inline-block;
   padding: 6px 12px;
-  background: #fff; // White background for pill? Or gray? Image shows white pill on white card? No, maybe light gray.
-  // Actually, looking at the image, the pill looks like a button with a border.
+  background: #fff;
   border: 1px solid $color-gray-100;
   background: transparent;
   color: $color-black;

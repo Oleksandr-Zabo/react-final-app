@@ -1,6 +1,6 @@
 import React from 'react';
 import './home.scss';
-import HeroFeatured from './Components/HeroFeatured';
+import HeroCarousel from './Components/HeroCarousel';
 import RecipeGridSection from './Components/RecipeGridSection';
 import CategoriesStrip from './Components/CategoriesStrip';
 import NewsletterBanner from './Components/NewsletterBanner';
@@ -24,6 +24,8 @@ const Home3 = () => {
     wouldMakePercent: 85,
     // We keep the image of the cheesecake as it looks like a tart
   };
+
+  const carouselRecipes = [featured, ...allRecipes.slice(1, 4)];
   
   // Super Delicious: 6 recipes
   const superDelicious = allRecipes.slice(0, 6);
@@ -34,7 +36,7 @@ const Home3 = () => {
 
   return (
     <div className="homepage-container home3">
-      <HeroFeatured recipe={featured} />
+      <HeroCarousel recipes={carouselRecipes} />
       <CategoriesStrip categories={categories} />
       <RecipeGridSection title="Super Delicious" recipes={superDelicious} />
       <CollectionsGrid collections={collections} />

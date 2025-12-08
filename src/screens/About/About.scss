@@ -165,7 +165,11 @@
         display: flex;
         gap: 20px;
 
-        a {
+        button {
+          background: none;
+          border: none;
+          padding: 0;
+          cursor: pointer;
           display: inline-block;
           width: 24px;
           height: 24px;

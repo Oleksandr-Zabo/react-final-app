@@ -16,32 +16,37 @@ import CategoryDetail from './screens/Category/CategoryDetail';
 import Favorites from './screens/Favorites/Favorites';
 import About from './screens/About/About';
 import { CookieBanner } from './components/Modal';
+import { AuthModalProvider } from './context/AuthModalContext';
+import GlobalAuthModal from './components/GlobalAuthModal';
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Header />
+    <AuthModalProvider>
+      <Router>
+        <div className="App">
+          <Header />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/homepage-2" element={<Home2 />} />
-          <Route path="/homepage-3" element={<Home3 />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/categories" element={<Categories />} />
-          <Route path="/category/:id" element={<CategoryDetail />} />
-          <Route path="/favorites" element={<Favorites />} />
-          <Route path="/search" element={<SearchResults />} />
-          <Route path="/blog-post" element={<BlogPage />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/recipe/:slug" element={<RecipeDetail />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/homepage-2" element={<Home2 />} />
+            <Route path="/homepage-3" element={<Home3 />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/categories" element={<Categories />} />
+            <Route path="/category/:id" element={<CategoryDetail />} />
+            <Route path="/favorites" element={<Favorites />} />
+            <Route path="/search" element={<SearchResults />} />
+            <Route path="/blog-post" element={<BlogPage />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/recipe/:slug" element={<RecipeDetail />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
 
-        <Footer />
-        <CookieBanner />
-      </div>
-    </Router>
+          <Footer />
+          <CookieBanner />
+          <GlobalAuthModal />
+        </div>
+      </Router>
+    </AuthModalProvider>
   );
 }
 

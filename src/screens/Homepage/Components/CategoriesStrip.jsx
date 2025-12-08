@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../../Homepage/home.scss';
 import './CategoriesStrip.scss';
 
@@ -9,12 +10,12 @@ const CategoriesStrip = ({ categories }) => {
       <h2 className="hp-title">Popular Categories</h2>
       <div className="categories-strip__list">
         {categories.map(c => (
-          <div key={c.id} className="categories-strip__item">
+          <Link to={`/category/${c.id}`} key={c.id} className="categories-strip__item">
             <div className="categories-strip__avatar">
               <img src={c.image} alt={c.name} />
             </div>
             <span className="categories-strip__name">{c.name}</span>
-          </div>
+          </Link>
         ))}
       </div>
     </section>

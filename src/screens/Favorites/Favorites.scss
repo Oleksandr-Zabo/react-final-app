@@ -36,7 +36,7 @@
             .icon-wrapper {
                 width: 48px;
                 height: 48px;
-                background-color: #FF642F; // Orange color from screenshot
+                background-color: $color-primary;
                 border-radius: 50%;
                 display: flex;
                 align-items: center;
@@ -65,7 +65,7 @@
                 font-size: 48px;
                 font-weight: 700;
                 margin: 0;
-                color: #000;
+                color: $color-black;
 
                 @media (max-width: 768px) {
                     font-size: 32px;
@@ -137,13 +137,53 @@
                 }
 
                 &.delete-btn {
-                    color: #FF642F;
+                    color: $color-primary;
                     
                     &:disabled {
                         color: #ccc;
                         cursor: not-allowed;
                     }
                 }
+            }
+        }
+    }
+
+    .empty-favorites {
+        text-align: center;
+        padding: 60px 20px;
+        background: $color-gray-200;
+        border-radius: 8px;
+        margin-bottom: 60px;
+
+        .empty-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .browse-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: $color-primary;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background 0.2s;
+
+            &:hover {
+                background: darken($color-primary, 10%);
             }
         }
     }
@@ -212,8 +252,8 @@
                             background: rgba(255, 100, 47, 0.2);
                             
                             .checkbox {
-                                background: #FF642F;
-                                border-color: #FF642F;
+                                background: $color-primary;
+                                border-color: $color-primary;
                                 position: relative;
 
                                 &::after {
@@ -244,7 +284,7 @@
                     font-weight: 600;
                     line-height: 1.4;
                     margin: 0;
-                    color: #000;
+                    color: $color-black;
                 }
             }
         }
@@ -256,7 +296,7 @@
         .load-more-btn {
             padding: 12px 40px;
             background: white;
-            border: 1px solid #000;
+            border: 1px solid $color-black;
             border-radius: 4px;
             font-weight: 600;
             font-size: 14px;
@@ -264,7 +304,7 @@
             transition: all 0.2s;
 
             &:hover {
-                background: #000;
+                background: $color-black;
                 color: white;
             }
         }
