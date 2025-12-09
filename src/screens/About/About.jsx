@@ -81,7 +81,7 @@ const About = () => {
           <div className="operating-content">
             <h3>Operatring from NYC, Dubai and London</h3>
             <p>
-              Gastronomy atmosphere set aside. Slice butternut cooking home. Delicious romantic undisturbed raw platter will mald. Thick Skewers skillet natural, smoker soy sauce wait roux. slices rosetta bone-in simmer precision alongside baby leeks. Crafting renders aromatic enjoyment.
+              Gastronomy atmosphere set aside. Slice butternut cooking home. Delicious romantic undisturbed raw platter will mald. Thick Skewers skillet natural, smoker soy sauce wait roux. slices rosette bone-in simmer precision alongside baby leeks. Crafting renders aromatic enjoyment.
             </p>
             <div className="social-icons">
               <button type="button" onClick={() => {}}><img src={facebook} alt="Facebook" /></button>
