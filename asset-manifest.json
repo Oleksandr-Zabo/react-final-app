@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-final-app/static/css/main.8079bed3.css",
-    "main.js": "/react-final-app/static/js/main.3224ef49.js",
+    "main.js": "/react-final-app/static/js/main.f1f82942.js",
     "static/js/206.072b641e.chunk.js": "/react-final-app/static/js/206.072b641e.chunk.js",
     "static/media/1.png": "/react-final-app/static/media/1.3ac5dc97fd468272783c.png",
     "static/media/Intro.png": "/react-final-app/static/media/Intro.f0d9441d415de022aa1c.png",
@@ -67,6 +67,6 @@
   },
   "entrypoints": [
     "static/css/main.8079bed3.css",
-    "static/js/main.3224ef49.js"
+    "static/js/main.f1f82942.js"
   ]
 }
