@@ -22,7 +22,7 @@ import GlobalAuthModal from './components/GlobalAuthModal';
 function App() {
   return (
     <AuthModalProvider>
-      <Router>
+      <Router basename="/react-final-app">
         <div className="App">
           <Header />
 
